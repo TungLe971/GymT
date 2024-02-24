@@ -1,0 +1,61 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-h {
+  padding: 2rem;
+  padding-top: 1.5rem;
+  flex: 3;
+}
+
+.right-h {
+  flex: 1;
+}
+
+.tieu-de {
+  margin-top: 4rem;
+  background-color: #363d42;
+  border-radius: 4rem;
+  width: fit-content;
+  padding: 20px 13px;
+  text-transform: uppercase;
+  color: white;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tieu-de > span {
+  z-index: 2;
+}
+
+.tieu-de > div {
+  position: absolute;
+  background-color: var(--orange);
+  width: 4.5rem;
+  height: 80%;
+  left: 8px;
+  border-radius: 3rem;
+  z-index: 1;
+}
+
+.home-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-transform: uppercase;
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: white;
+  text-overflow: inherit;
+}
+
+.hero-text > div:nth-of-type(3) {
+  font-size: 1rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  text-transform: none;
+  width: 80%;
+}
