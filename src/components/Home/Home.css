@@ -7,14 +7,20 @@
   padding: 2rem;
   padding-top: 1.5rem;
   flex: 3;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
 }
 
 .right-h {
   flex: 1;
+  position: relative;
+  background-color: rgb(22 86 112);
 }
 
 .tieu-de {
-  margin-top: 4rem;
+  margin-top: 3rem;
+  margin-left: 0.5rem;
   background-color: #363d42;
   border-radius: 4rem;
   width: fit-content;
@@ -42,20 +48,124 @@
 }
 
 .home-text {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   text-transform: uppercase;
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: bold;
   color: white;
   text-overflow: inherit;
 }
 
-.hero-text > div:nth-of-type(3) {
+.home-text > div:nth-of-type(3) {
   font-size: 1rem;
   font-weight: 200;
   letter-spacing: 1px;
   text-transform: none;
   width: 80%;
+}
+
+.solieu {
+  display: flex;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.solieu > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.solieu > div > span:nth-of-type(1) {
+  color: white;
+  font-size: 2rem;
+}
+
+.solieu > div > span:nth-of-type(2) {
+  color: var(--gray);
+  text-transform: none;
+}
+
+/*right-h */
+.right-h > .btn {
+  position: absolute;
+  right: 3rem;
+  top: 2rem;
+  color: black;
+}
+
+.heart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--darkGrey);
+  width: fit-content;
+  padding: 1rem;
+  align-items: start;
+  border-radius: 5px;
+  position: absolute;
+  right: 4rem;
+  top: 7rem;
+}
+
+.heart > img {
+  width: 2rem;
+}
+
+.heart > :nth-child(2) {
+  color: var(--gray);
+}
+
+.heart > :nth-child(3) {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.run-man {
+  position: absolute;
+  top: 8rem;
+  right: 7rem;
+  width: 27rem;
+  filter: brightness(99%);
+}
+
+.image_skin {
+  position: absolute;
+  top: 4rem;
+  right: 20rem;
+  z-index: -1;
+  width: 15rem;
+}
+
+.calories {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--caloryCard);
+  border-radius: 5px;
+  padding: 1rem;
+  width: 9rem;
+  position: absolute;
+  top: 34rem;
+  right: 30rem;
+}
+
+.calories > img {
+  width: 3rem;
+}
+
+.calories > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.calories > div > :nth-child(1) {
+  color: var(--gray);
+}
+
+.calories > div > :nth-child(2) {
+  color: white;
+  font-size: 1.5rem;
 }
