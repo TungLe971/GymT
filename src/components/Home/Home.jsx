@@ -49,7 +49,7 @@ const Home = () => {
       </div>
 
       <div className="right-h">
-        <button className="btn">Tham gia ngay</button>
+        <button className="btn">Đăng nhập</button>
 
         <div className="heart">
           <img src={Heart} alt="" />
