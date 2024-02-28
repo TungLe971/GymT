@@ -41,6 +41,6 @@
   align-items: center;
 }
 
-.btn > hover {
+.btn:hover {
   cursor: pointer;
 }

@@ -22,27 +22,33 @@ const Reasons = () => {
       <div className="right-r">
         <span>Một số lý do</span>
         <div>
-          <span className="text-rong">Tại sao</span>
+          <span className="text-rong">Tại sao </span>
           <span>chọn chúng tôi?</span>
         </div>
 
         <div className="details-r">
           <div>
-            <img src="tick" alt=""></img>
-            <span></span>
+            <img src={tick} alt=""></img>
+            <span>Hơn 100+ huấn luyện viên chuyên nghiệp</span>
           </div>
           <div>
-            <img src="tick" alt="" />
-            <span></span>
+            <img src={tick} alt="" />
+            <span>đào tạo thông minh, nhanh chóng và hiệu quả hơn trước</span>
           </div>
           <div>
-            <img src="tick" alt="" />
-            <span></span>
+            <img src={tick} alt="" />
+            <span>Có chương trình miễn phí cho thành viên mới</span>
           </div>
           <div>
-            <img src="tick" alt="" />
-            <span></span>
+            <img src={tick} alt="" />
+            <span>CÓ CÁC ĐỐI TÁC ĐÁNG TIN CẬY</span>
           </div>
+        </div>
+        <span style={{ color: 'var(--gray)', fontWeight: 'normal' }}>những cộng sự của chúng tôi</span>
+        <div className="partners">
+          <img src={nb} alt="" />
+          <img src={adidas} alt="" />
+          <img src={nike} alt="" />
         </div>
       </div>
     </div>
