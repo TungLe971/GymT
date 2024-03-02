@@ -15,7 +15,7 @@
 .right-h {
   flex: 1;
   position: relative;
-  background-color: #0f584f;
+  background: linear-gradient(120deg, #fa8f22 0%, #f7c23c 50%, #b4691e 100%);
 }
 
 .tieu-de {
@@ -103,7 +103,7 @@
   background-color: var(--darkGrey);
   width: fit-content;
   padding: 1rem;
-  align-items: start;
+  align-items: flex-start;
   border-radius: 5px;
   position: absolute;
   right: 4rem;
@@ -168,4 +168,19 @@
 .calories > div > :nth-child(2) {
   color: white;
   font-size: 1.5rem;
+}
+
+.blur-h1 {
+  width: 22rem;
+  height: 30rem;
+  left: 0;
+  filter: blur(199px);
+}
+
+.blur-h2 {
+  width: 22rem;
+  height: 30rem;
+  right: 5rem;
+  top: 10rem;
+  filter: blur(199px);
 }

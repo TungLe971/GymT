@@ -41,6 +41,7 @@ const Testimonials = () => {
             alt=""
           ></img>
         </div>
+        <div className="blur blur-t"></div>
       </div>
     </div>
   );

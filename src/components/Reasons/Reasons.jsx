@@ -20,8 +20,8 @@ const Reasons = () => {
       </div>
 
       <div className="right-r">
-        <span>Một số lý do</span>
-        <div>
+        <span style={{ fontWeight: 'bold' }}>Một số lý do</span>
+        <div style={{ fontWeight: 'bold' }}>
           <span className="text-rong">Tại sao </span>
           <span>chọn chúng tôi?</span>
         </div>
@@ -29,7 +29,7 @@ const Reasons = () => {
         <div className="details-r">
           <div>
             <img src={tick} alt=""></img>
-            <span>Hơn 100+ huấn luyện viên chuyên nghiệp</span>
+            <span>Hơn 100+ huấn luyện viên chuyên nghiệp thân thiện, đáng tin cậy</span>
           </div>
           <div>
             <img src={tick} alt="" />
@@ -37,11 +37,15 @@ const Reasons = () => {
           </div>
           <div>
             <img src={tick} alt="" />
-            <span>Có chương trình miễn phí cho thành viên mới</span>
+            <span>Cơ sở vật chất sạch sẽ thoáng mát và hiện đại</span>
           </div>
           <div>
             <img src={tick} alt="" />
-            <span>CÓ CÁC ĐỐI TÁC ĐÁNG TIN CẬY</span>
+            <span>Môi trường lành mạnh và năng động</span>
+          </div>
+          <div>
+            <img src={tick} alt="" />
+            <span>Có rất nhiều chương trình và sự kiện dành cho hội viên</span>
           </div>
         </div>
         <span style={{ color: 'var(--gray)', fontWeight: 'normal' }}>những cộng sự của chúng tôi</span>

@@ -9,6 +9,8 @@ import image_skin from '../../pic/image_skin.png';
 const Home = () => {
   return (
     <div className="home">
+      <div className="blur blur-h1"></div>
+      <div className="blur blur-h2"></div>
       <div className="left-h">
         <Header />
         <div className="tieu-de">
@@ -34,16 +36,16 @@ const Home = () => {
 
         <div className="solieu">
           <div>
-            <span>100+</span>
+            <span> + 129</span>
             <span>HUẤN LUYỆN VIÊN CHUYÊN GIA </span>
           </div>
           <div>
-            <span>1000+</span>
+            <span> + 1392</span>
             <span>HỘI VIÊN ĐÃ THAM GIA</span>
           </div>
           <div>
-            <span>20+</span>
-            <span>cHƯƠNG TRÌNH RÈN LUYỆN</span>
+            <span>+ 24</span>
+            <span>CHƯƠNG TRÌNH RÈN LUYỆN</span>
           </div>
         </div>
       </div>

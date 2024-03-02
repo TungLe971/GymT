@@ -76,3 +76,10 @@
   width: 1.5rem;
   cursor: pointer;
 }
+
+.blur-t {
+  width: 39rem;
+  height: 39rem;
+  right: 0;
+  filter: blur(290px);
+}

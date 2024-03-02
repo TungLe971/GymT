@@ -1,0 +1,68 @@
+.Footer-container {
+  position: relative;
+}
+
+.Footer-container > hr {
+  border: 1px solid var(--lightgray);
+}
+
+.footer {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+  height: 20rem;
+}
+
+.logo-f {
+  display: flex;
+  gap: 4.3rem;
+}
+
+.logo-f > a > img {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  filter: grayscale(100%) brightness(0%) invert(100%);
+}
+
+.logo-f1 {
+  display: flex;
+  gap: 4rem;
+  flex-direction: column;
+}
+
+.logo-f1 > div {
+  display: flex;
+  gap: 3rem;
+}
+
+.logo-f1 > div > span {
+  color: var(--orange);
+  margin-top: 0.6rem;
+}
+
+.logo-f1 > div > img {
+  width: 2rem;
+  height: 2rem;
+  filter: grayscale(100%) brightness(0%) invert(100%);
+}
+
+.blur-f-1 {
+  width: 20rem;
+  height: 17rem;
+  left: 20rem;
+  filter: blur(210px);
+  background: rgb(171, 34, 34);
+}
+
+.blur-f-2 {
+  width: 15rem;
+  height: 20rem;
+  right: 20rem;
+  top: 5rem;
+  filter: blur(230px);
+  background: rgb(123, 18, 18);
+}

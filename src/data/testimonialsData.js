@@ -21,14 +21,13 @@ export const testimonialsData = [
   {
     image: image3,
     review:
-      'Tóc không tự nhiên sinh ra và mất đi, nó chỉ chuyển từ đầu xuống cơ bắp thôi. Chuyện đúng hay sai là thứ không tồn tại, hãy nói chuyện với cơ bắp của tôi này. Nó sẽ cho bạn biết GymT tuyệt vời thế nào.',
+      'Tóc không tự nhiên sinh ra và mất đi, nó chỉ chuyển từ đầu vào trong đống bắp. Hãy đến với GymT, chuyện đúng sai chỉ còn có nóc nhà thôi.',
     name: 'Dwayne Johnson',
     status: 'Diễn viên điện ảnh',
   },
   {
     image: image4,
-    review:
-      'Moew, moew moew moew. Moew, moewwwwwwwwww(GymT, không gì là không thể. Cá ở đây rất ngon, hãy đến đâyyyyyyyyyyyy.)',
+    review: 'Moew, moew moew moew. Moew, moewwwwwwwwww(GymT, không gì là không thể. Cá, ngon quá điiiiiiiiii.)',
     name: 'Beerus',
     status: 'Nhân viên quán',
   },
