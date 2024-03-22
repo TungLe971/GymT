@@ -21,7 +21,7 @@ export const testimonialsData = [
   {
     image: image3,
     review:
-      'Tóc không tự nhiên sinh ra và mất đi, nó chỉ chuyển từ đầu vào trong đống bắp. Hãy đến với GymT, chuyện đúng sai chỉ còn có nóc nhà thôi.',
+      'Tóc không tự nhiên sinh ra và mất đi, nó chỉ chuyển từ đầu vào đống bắp. Hãy đến với GymT, chuyện đúng sai chỉ còn có nóc nhà thôi.',
     name: 'Dwayne Johnson',
     status: 'Diễn viên điện ảnh',
   },
