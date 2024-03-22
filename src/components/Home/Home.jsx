@@ -1,18 +1,20 @@
 import React from 'react';
 import './Home.css';
-import Header from '../Header/Header';
+import Headers from '../Headers/Headers';
 import Heart from '../../pic/heart.png';
 import Calories from '../../pic/calories.png';
 import run_man from '../../pic/run_man.png';
-import image_skin from '../../pic/image_skin.png';
 
 const Home = () => {
+  const handleLoginClick = () => {
+    window.location.href = '/login';
+  };
   return (
     <div className="home">
       <div className="blur blur-h1"></div>
       <div className="blur blur-h2"></div>
       <div className="left-h">
-        <Header />
+        <Headers />
         <div className="tieu-de">
           <div></div>
           <span>Chúng tôi luôn dõi theo bạn!</span>
@@ -51,7 +53,9 @@ const Home = () => {
       </div>
 
       <div className="right-h">
-        <button className="btn">Đăng nhập</button>
+        <button className="btn" onClick={handleLoginClick}>
+          Đăng nhập
+        </button>
 
         <div className="heart">
           <img src={Heart} alt="" />
@@ -60,7 +64,6 @@ const Home = () => {
         </div>
 
         <img src={run_man} alt="" className="run-man" />
-        <img src={image_skin} alt="" className="image-skin" />
 
         <div className="calories">
           <img src={Calories} alt="" />

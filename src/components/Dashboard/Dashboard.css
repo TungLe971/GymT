@@ -1,0 +1,40 @@
+#layoutSidenav_content {
+  margin-left: 240px;
+}
+
+.container-fluid {
+  padding: 20px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-body {
+  font-size: 1.2rem;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+}
+
+.card-footer a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb {
+  background-color: #f8f9fa;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+
+.card-footer .fas.fa-angle-right {
+  font-size: 1.2rem;
+}

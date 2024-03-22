@@ -1,13 +1,13 @@
 import React from 'react';
-import './Header.css';
+import './Headers.css';
 import Logo from '../../pic/logo.png';
 
-const Header = () => {
+const Headers = () => {
   return (
-    <div className="header">
+    <div className="headers">
       <img src={Logo} alt="" className="logo"></img>
 
-      <ul className="header-menu">
+      <ul className="headers-menu">
         <li>Trang chủ</li>
         <li>Chương trình</li>
         <li>Tại sao là chúng tôi</li>
@@ -18,4 +18,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Headers;

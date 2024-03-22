@@ -89,11 +89,22 @@
 }
 
 /*right-h */
+
 .right-h > .btn {
   position: absolute;
   right: 3rem;
   top: 2rem;
-  color: black;
+  border: 2px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+}
+
+.right-h > .btn:hover {
+  background-color: #007bff;
+  color: white;
 }
 
 .heart {
