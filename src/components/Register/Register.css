@@ -51,6 +51,8 @@
   border-radius: 5px;
   transition: all 0.3s ease-out;
   margin-left: 9rem;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .btn-primary:hover {

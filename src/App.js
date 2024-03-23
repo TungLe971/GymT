@@ -22,6 +22,21 @@ function App() {
 
   return (
     <div className="App">
+      <Routes>
+        <Route element={<Layout />}>
+          <Route element={<Main />}>
+            <Route element={<PrivateRoutes />}>
+              {isLoggedIn && <Route path="/" element={<Dashboard />} />}
+              {isLoggedIn && <Route path="/user" element={<UserList />} />}
+            </Route>
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/register" element={<Register />} />
+          </Route>
+          {isLoggedIn && <Navigate to="/" />}
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        </Route>
+      </Routes>
       {!isLoggedIn && (
         <>
           <Home />
@@ -33,24 +48,6 @@ function App() {
           <Footer />
         </>
       )}
-      <Routes>
-        <Route element={<Layout />}>
-          <Route element={<Main />}>
-            <Route element={<PrivateRoutes />}>
-              {isLoggedIn && <Route path="/" element={<Dashboard />} />}
-              {isLoggedIn && <Route path="/user" element={<UserList />} />}
-            </Route>
-          </Route>
-          <Route element={<PublicRoutes />}>
-            {/* <Route path="/user" element={<UserList />} />
-            <Route path="/" element={<Dashboard />} /> */}
-            <Route path="/register" element={<Register />} />
-
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-          </Route>
-        </Route>
-        {isLoggedIn && <Navigate to="/" />}
-      </Routes>
     </div>
   );
 }

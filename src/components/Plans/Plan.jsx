@@ -3,6 +3,11 @@ import './Plans.css';
 import { plansData } from '../../data/plansData';
 import whiteTick from '../../pic/whiteTick.png';
 
+const scrollToTestimonials = () => {
+  const testimonialsSection = document.getElementById('testimonials');
+  testimonialsSection.scrollIntoView({ behavior: 'smooth' });
+};
+
 const Plans = () => {
   return (
     <div className="Plans-container">
@@ -30,10 +35,14 @@ const Plans = () => {
               ))}
             </div>
 
-            <div>
+            <div class="hover-box">
               <span>{'Xem thêm lợi ích ->'}</span>
+              <div class="hover-box-content">Chi tiết liên hệ với GymT</div>
             </div>
-            <button className="btn">Tham gia ngay</button>
+
+            <button className="btn" onClick={scrollToTestimonials}>
+              Tham gia ngay
+            </button>
           </div>
         ))}
       </div>

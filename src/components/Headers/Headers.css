@@ -1,4 +1,4 @@
-.headers {
+.Headers {
   display: flex;
   justify-content: space-between;
 }
@@ -8,14 +8,14 @@
   height: 3rem;
 }
 
-.headers-menu {
+.Headers-menu {
   list-style: none;
   display: flex;
   color: white;
   gap: 2rem;
 }
 
-.headers-menu > li:hover {
+.Headers-menu > li:hover {
   cursor: pointer;
   color: darkorange;
 }

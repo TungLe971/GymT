@@ -1,4 +1,4 @@
-.home {
+.Home {
   display: flex;
   justify-content: space-between;
 }
@@ -40,14 +40,14 @@
 .tieu-de > div {
   position: absolute;
   background-color: var(--orange);
-  width: 4.5rem;
+  width: 6.2rem;
   height: 80%;
   left: 8px;
   border-radius: 3rem;
   z-index: 1;
 }
 
-.home-text {
+.Home-text {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
   text-overflow: inherit;
 }
 
-.home-text > div:nth-of-type(3) {
+.Home-text > div:nth-of-type(3) {
   font-size: 1rem;
   font-weight: 200;
   letter-spacing: 1px;

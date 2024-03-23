@@ -87,3 +87,27 @@
   right: 5rem;
   filter: blur(180px);
 }
+
+.hover-box {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-box .hover-box-content {
+  display: none;
+  position: absolute;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(95, 182, 216, 0.3);
+  bottom: -52%;
+  left: 47%;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-box span:hover + .hover-box-content {
+  display: block;
+  opacity: 1;
+}
