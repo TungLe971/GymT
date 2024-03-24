@@ -1,9 +1,9 @@
 import React from 'react';
 import './Home.css';
 import Headers from '../Headers/Headers';
-import Heart from '../../pic/heart.png';
-import Calories from '../../pic/calories.png';
-import run_man from '../../pic/run_man.png';
+import Heart from '../../../pic/heart.png';
+import Calories from '../../../pic/calories.png';
+import run_man from '../../../pic/run_man.png';
 import { motion } from 'framer-motion';
 import NumberCourter from 'number-counter';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Plans.css';
-import { plansData } from '../../data/plansData';
-import whiteTick from '../../pic/whiteTick.png';
+import { plansData } from '../../../data/plansData';
+import whiteTick from '../../../pic/whiteTick.png';
 
 const scrollToTestimonials = () => {
   const testimonialsSection = document.getElementById('testimonials');

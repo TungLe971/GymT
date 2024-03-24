@@ -1,53 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import Home from './components/Home/Home';
-import Programs from './components/Programs/Programs';
-import Reasons from './components/Reasons/Reasons';
-import Plans from './components/Plans/Plan';
-import Testimonials from './components/Testimonials/Testimonials';
-import Join from './components/Join/Join';
-import Footer from './components/Footer/Footer';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Main from './layouts/Main';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PrivateRoutes from './layouts/PrivateRoutes';
-import PublicRoutes from './layouts/PublicRoutes';
+// import PublicRoutes from './layouts/PublicRoutes';
 import Layout from './layouts/Layout';
 import UserList from './components/user/UserList';
+import Home from './components/Outside/Home/Home';
+import Programs from './components/Outside/Programs/Programs';
+import Reasons from './components/Outside/Reasons/Reasons';
+import Plans from './components/Outside/Plans/Plan';
+import Testimonials from './components/Outside/Testimonials/Testimonials';
+import Join from './components/Outside/Join/Join';
+import Footer from './components/Outside/Footer/Footer';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
-    <div className="App">
+    <div>
       <Routes>
         <Route element={<Layout />}>
-          <Route element={<Main />}>
-            <Route element={<PrivateRoutes />}>
-              {isLoggedIn && <Route path="/" element={<Dashboard />} />}
-              {isLoggedIn && <Route path="/user" element={<UserList />} />}
-            </Route>
+          <Route path="/" element={<Main />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/user" element={<UserList />} />
+            <Route element={<PrivateRoutes />}></Route>
           </Route>
-          <Route element={<PublicRoutes />}>
-            <Route path="/register" element={<Register />} />
-          </Route>
-          {isLoggedIn && <Navigate to="/" />}
-          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Route>
       </Routes>
-      {!isLoggedIn && (
-        <>
-          <Home />
-          <Programs />
-          <Reasons />
-          <Plans />
-          <Testimonials />
-          <Join />
-          <Footer />
-        </>
-      )}
+      <div className="App">
+        <Home />
+        <Programs />
+        <Reasons />
+        <Plans />
+        <Testimonials />
+        <Join />
+        <Footer />
+      </div>
     </div>
   );
 }

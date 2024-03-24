@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './Testimonials.css';
-import { testimonialsData } from '../../data/testimonialsData';
-import leftArrows from '../../pic/leftArrow.png';
-import rightArrows from '../../pic/rightArrow.png';
+import { testimonialsData } from '../../../data/testimonialsData';
+import leftArrows from '../../../pic/leftArrow.png';
+import rightArrows from '../../../pic/rightArrow.png';
 import { motion } from 'framer-motion';
 
 const Testimonials = () => {

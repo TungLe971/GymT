@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1890ff;
+  padding: 0 20px;
+}
+
+.search-input {
+  width: 200px;
+}
+
+.search-input input {
+  color: white;
+}
+
+.btn-rgt {
+  background-color: #2ec9f9;
+}
+
+.search-input .ant-input-group-addon {
+  background-color: transparent;
+}
+
+.search-input .ant-input {
+  background-color: transparent;
+  border: none;
+}
+
+.left-content {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #f6faff;
+}
+
+.right-content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}

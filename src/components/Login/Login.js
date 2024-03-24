@@ -85,59 +85,51 @@ function Login() {
   };
 
   return (
-    <div id="layoutAuthentication" className="bg-primary">
-      <div id="layoutAuthentication_content">
+    <div id="login_form" className="lg-primary">
+      <div id="login_content">
         <main>
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-5">
-                <div className="card shadow-lg border-0 rounded-lg mt-5">
-                  <h3 className="text-center-1 font-weight-light my-4" style={{ color: 'white', fontSize: '2.5rem' }}>
-                    Login Account
-                  </h3>
-                  <div className="card-body">
-                    <form>
-                      <div className="form-floating mb-3">
-                        <label>Email address</label>
-                        <input
-                          className="form-control"
-                          type="email"
-                          name="email"
-                          onChange={onChange}
-                          placeholder="name@example.com"
-                        />
-                        {formErrors.email && <p style={{ color: 'red' }}>{formErrors.email}</p>}
-                      </div>
-                      <div className="form-floating mb-3">
-                        <label>Password</label>
-                        <input
-                          className="form-control"
-                          name="password"
-                          type="password"
-                          onChange={onChange}
-                          placeholder="Password"
-                        />
-                        {formErrors.password && <p style={{ color: 'red' }}>{formErrors.password}</p>}
-                      </div>
-                      <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <a className="small" href="password.html">
-                          Forgot Password?
-                        </a>
-                        <button className="btn btn-primary" type="button" onClick={onSubmit}>
-                          Login
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  {/* <div className="card-footer text-center py-3">
+          <h3 className="text-center-lg" style={{ color: 'white', fontSize: '2.5rem' }}>
+            Login Account
+          </h3>
+          <div className="card-body-lg">
+            <form>
+              <div className="form-floating-lg">
+                <label>Email address</label>
+                <input
+                  className="form-control"
+                  type="email"
+                  name="email"
+                  onChange={onChange}
+                  placeholder="name@example.com"
+                />
+                {formErrors.email && <p style={{ color: 'red' }}>{formErrors.email}</p>}
+              </div>
+              <div className="form-floating-lg">
+                <label>Password</label>
+                <input
+                  className="form-control"
+                  name="password"
+                  type="password"
+                  onChange={onChange}
+                  placeholder="Password"
+                />
+                {formErrors.password && <p style={{ color: 'red' }}>{formErrors.password}</p>}
+              </div>
+              <div className="lg-box">
+                <a className="small-lg" href="password.html">
+                  Forgot Password?
+                </a>
+                <button className="btn btn-primary-lg" type="button" onClick={onSubmit}>
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+          {/* <div className="card-footer text-center py-3">
               <div className="small">
                 <Link to="/register">Need an account? Sign up!</Link>
               </div>
             </div> */}
-                </div>
-              </div>
-            </div>
-          </div>
         </main>
       </div>
     </div>

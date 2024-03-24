@@ -1,13 +1,13 @@
 import React from 'react';
 import './Footer.css';
-import Github from '../../pic/github.png';
-import Instagram from '../../pic/instagram.png';
-import LinkedIn from '../../pic/linkedin.png';
-import House from '../../pic/home.png';
-import FB from '../../pic/facebook.png';
-import YT from '../../pic/youtube.png';
-import SĐT from '../../pic/call.png';
-import Mail from '../../pic/mail.png';
+import Github from '../../../pic/github.png';
+import Instagram from '../../../pic/instagram.png';
+import LinkedIn from '../../../pic/linkedin.png';
+import House from '../../../pic/home.png';
+import FB from '../../../pic/facebook.png';
+import YT from '../../../pic/youtube.png';
+import SĐT from '../../../pic/call.png';
+import Mail from '../../../pic/mail.png';
 
 const Footer = () => {
   return (

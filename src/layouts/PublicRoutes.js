@@ -1,12 +1,10 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const PublicRoutes = () => {
-    let token = localStorage.getItem('access_token') || false;
+  let token = localStorage.getItem('access_token') || false;
 
-    return (
-        !token ? <Outlet /> : <Navigate to="/" />
-    )
-}
+  return !token ? <Outlet /> : <Navigate to="/" />;
+};
 
-export default PublicRoutes
+export default PublicRoutes;

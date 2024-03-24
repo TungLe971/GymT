@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Headers.css';
-import Logo from '../../pic/logo.png';
+import Logo from '../../../pic/logo.png';
 import { Link } from 'react-scroll';
 
 const Headers = () => {

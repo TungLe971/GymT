@@ -1,13 +1,13 @@
 import React from 'react';
 import './Reasons.css';
-import image1 from '../../pic/image1.png';
-import image2 from '../../pic/image2.png';
-import image3 from '../../pic/image3.png';
-import image4 from '../../pic/image4.png';
-import nb from '../../pic/nb.png';
-import adidas from '../../pic/adidas.png';
-import nike from '../../pic/nike.png';
-import tick from '../../pic/tick.png';
+import image1 from '../../../pic/image1.png';
+import image2 from '../../../pic/image2.png';
+import image3 from '../../../pic/image3.png';
+import image4 from '../../../pic/image4.png';
+import nb from '../../../pic/nb.png';
+import adidas from '../../../pic/adidas.png';
+import nike from '../../../pic/nike.png';
+import tick from '../../../pic/tick.png';
 
 const Reasons = () => {
   return (
