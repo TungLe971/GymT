@@ -21,8 +21,8 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="card-court" style={{ marginTop: 20, marginLeft: 30 }}>
-      <Title level={2}>Tình trạng thẻ</Title>
+    <div className="card-court" style={{ padding: 20, width: '100%' }}>
+      <Title level={2}>Hiện trạng thực tại</Title>
       <Row gutter={16}>
         <Col span={6}>
           <Card title="Total Users" extra={<UserOutlined />} bordered={false}>
@@ -35,13 +35,13 @@ const Dashboard = () => {
           </Card>
         </Col>
         <Col span={6}>
-          <Card title="Success Card" bordered={false}>
-            Success Card Content
+          <Card title="Hội viên" bordered={false}>
+            Total Member
           </Card>
         </Col>
         <Col span={6}>
-          <Card title="Danger Card" bordered={false}>
-            Danger Card Content
+          <Card title="Nhân Viên" bordered={false}>
+            Total Staff
           </Card>
         </Col>
       </Row>

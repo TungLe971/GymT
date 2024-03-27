@@ -1,30 +1,49 @@
-import React from 'react';
-import './Register.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import requestApi from '../../helpers/api';
 import { message } from 'antd';
+import './UserEdit.css';
 
-const Register = () => {
+const UserEdit = () => {
+  const params = useParams();
+  console.log('id user => ', params.id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleSubmitFormAdd = async (data) => {
-    console.log('Submitting form...');
-    console.log('data form => ', data);
+  useEffect(() => {
     dispatch(actions.controlLoading(true));
     try {
-      const res = await requestApi('/users', 'Post', data);
+      const getDetailUser = async () => {
+        const res = await requestApi('/users/' + params.id, 'GET');
+        console.log('res =>', res);
+        dispatch(actions.controlLoading(false));
+        const fields = ['first_name', 'last_name', 'status'];
+        fields.forEach((field) => setValue(field, res.data[field]));
+      };
+      getDetailUser();
+    } catch (error) {
+      console.log('error =>', error);
+      dispatch(actions.controlLoading(false));
+    }
+  });
+
+  const handleSubmitFormUpdate = async (data) => {
+    console.log('data => ', data);
+    dispatch(actions.controlLoading(true));
+    try {
+      const res = await requestApi('/users/' + params.id, 'PUT', data);
       console.log('res=> ', res);
       dispatch(actions.controlLoading(false));
-      message.success('Tạo tài khoản thành công!', 2);
+      message.success('Sửa thành công!', 2);
       setTimeout(() => navigate('/user'), 1000);
     } catch (error) {
       console.log('error=> ', error);
@@ -38,7 +57,7 @@ const Register = () => {
           <div className="container">
             <div className="card-header">
               <h3 className="text-center font-weight-light my-4" style={{ color: 'white', fontSize: '2.5rem' }}>
-                Create Account
+                Update Account
               </h3>
             </div>
             <div className="card-body">
@@ -68,22 +87,8 @@ const Register = () => {
                     {errors.last_name && <p style={{ marginTop: 2, color: 'red' }}>{errors.last_name.message}</p>}
                   </div>
                 </div>
-                <div className="form-floating mb-3">
-                  <label for="inputEmail">Email address:</label>
-                  <input
-                    {...register('email', {
-                      required: 'Email name is required',
-                      pattern: { value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, message: 'Invalid email address' },
-                    })}
-                    className="form-control"
-                    id="inputEmail"
-                    type="email"
-                    placeholder="name@example.com"
-                  />
-                  {errors.email && <p style={{ marginTop: 2, color: 'red' }}>{errors.email.message}</p>}
-                </div>
                 <div className="row mb-3">
-                  <div className="form-floating mb-3 mb-md-0">
+                  {/* <div className="form-floating mb-3 mb-md-0">
                     <label for="inputPassword">Password:</label>
                     <input
                       {...register('password', { required: 'Password name is required' })}
@@ -93,16 +98,6 @@ const Register = () => {
                       placeholder="Create a password"
                     />
                     {errors.password && <p style={{ marginTop: 2, color: 'red' }}>{errors.password.message}</p>}
-                  </div>
-
-                  {/* <div className="form-floating mb-3 mb-md-0">
-                    <label for="inputPasswordConfirm">Confirm Password:</label>
-                    <input
-                      className="form-control"
-                      id="inputPasswordConfirm"
-                      type="password"
-                      placeholder="Confirm password"
-                    />
                   </div> */}
                   <div className="form-floating mb-3 mb-md-0">
                     <label for="inputStatus">Status:</label>
@@ -112,8 +107,18 @@ const Register = () => {
                     </select>
                   </div>
                 </div>
+                {/* <div className="form-floating mb-3 mb-md-0">
+                    <label for="inputPasswordConfirm">Confirm Password:</label>
+                    <input
+                      className="form-control"
+                      id="inputPasswordConfirm"
+                      type="password"
+                      placeholder="Confirm password"
+                    />
+                  </div> */}
+
                 <div className="mt-4 mb-0">
-                  <button className="btn btn-primary btn-block" onClick={handleSubmit(handleSubmitFormAdd)}>
+                  <button className="btn btn-primary btn-block" onClick={handleSubmit(handleSubmitFormUpdate)}>
                     Submit
                   </button>
                 </div>
@@ -125,5 +130,4 @@ const Register = () => {
     </div>
   );
 };
-
-export default Register;
+export default UserEdit;

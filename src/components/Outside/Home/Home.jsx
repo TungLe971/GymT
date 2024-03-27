@@ -15,8 +15,6 @@ const Home = () => {
   const transition = { type: 'spring', duration: 3 };
   return (
     <div className="Home" id="home">
-      <div className="blur blur-h1"></div>
-      <div className="blur blur-h2"></div>
       <div className="left-h">
         <Headers />
         <div className="tieu-de">
@@ -27,6 +25,8 @@ const Home = () => {
           ></motion.div>
           <span>Chúng tôi luôn dõi theo bạn!</span>
         </div>
+
+        <div className="blur blur-h1"></div>
 
         <div className="Home-text">
           <div>
@@ -70,6 +70,7 @@ const Home = () => {
         <button className="btn" onClick={handleLoginClick}>
           Đăng nhập
         </button>
+        <div className="blur blur-h2"></div>
 
         <motion.div
           className="heart"

@@ -6,9 +6,10 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import PrivateRoutes from './layouts/PrivateRoutes';
-// import PublicRoutes from './layouts/PublicRoutes';
+import PublicRoutes from './layouts/PublicRoutes';
 import Layout from './layouts/Layout';
 import UserList from './components/user/UserList';
+import UserEdit from './components/user/UserEdit';
 import Home from './components/Outside/Home/Home';
 import Programs from './components/Outside/Programs/Programs';
 import Reasons from './components/Outside/Reasons/Reasons';
@@ -23,13 +24,16 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Main />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/user" element={<UserList />} />
-            <Route element={<PrivateRoutes />}></Route>
+            <Route element={<PrivateRoutes />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/user" element={<UserList />} />
+              <Route path="/user/edit/:id" element={<UserEdit />} />
+              <Route path="/register" element={<Register />} />
+            </Route>
           </Route>
-
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route element={<PublicRoutes />}>
+            <Route path="/login" element={<Login />} />
+          </Route>
         </Route>
       </Routes>
       <div className="App">

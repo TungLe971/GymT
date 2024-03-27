@@ -1,6 +1,13 @@
 import React from 'react';
 import { Layout, Input, Button, Dropdown, Menu, Avatar } from 'antd';
-import { UserOutlined, SearchOutlined, LogoutOutlined, SettingOutlined, HistoryOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  SearchOutlined,
+  LogoutOutlined,
+  SettingOutlined,
+  HistoryOutlined,
+  BellOutlined,
+} from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import Item from 'antd/es/list/Item';
@@ -52,6 +59,7 @@ const Header = () => {
         <Button className="btn-rgt" type="text" onClick={onHandleRegister}>
           Register
         </Button>
+        <BellOutlined style={{ fontSize: 25, cursor: 'pointer' }} />
         <Dropdown overlay={menu} placement="bottomRight" arrow>
           <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
             <Avatar size="small" icon={<UserOutlined />} />

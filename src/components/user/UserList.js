@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Modal, Typography } from 'antd';
-import DataTable from '../common/DataTable';
+import { Button, Modal, Typography, Table, Input } from 'antd';
 import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
+import './UserList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
+const { Search } = Input;
 
 const UserList = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [users, setUsers] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   const [searchString, setSearchString] = useState('');
   const [selectedRows, setSelectedRows] = useState([]);
   const [deleteItem, setDeleteItem] = useState(null);
@@ -25,32 +28,39 @@ const UserList = () => {
     {
       title: 'ID',
       dataIndex: 'id',
+      key: 'id',
     },
     {
       title: 'First name',
       dataIndex: 'first_name',
+      key: 'first_name',
     },
     {
       title: 'Last name',
       dataIndex: 'last_name',
+      key: 'last_name',
     },
     {
       title: 'Email',
       dataIndex: 'email',
+      key: 'email',
     },
     {
       title: 'Created at',
       dataIndex: 'created_at',
+      key: 'created_at',
     },
     {
       title: 'Updated at',
       dataIndex: 'updated_at',
+      key: 'updated_at',
     },
     {
       title: 'Actions',
+      key: 'actions',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1">
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id)}>
             Edit
           </Button>
           <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id)}>
@@ -60,6 +70,15 @@ const UserList = () => {
       ),
     },
   ];
+
+  const onHandleRegister = () => {
+    navigate('/register');
+  };
+
+  const handleEdit = (id) => {
+    navigate('/user/edit/' + id);
+    console.log('Edit user with id => ', id);
+  };
 
   const handleDelete = (id) => {
     console.log('single delete with id => ', id);
@@ -98,7 +117,7 @@ const UserList = () => {
       .then((response) => {
         console.log('response=> ', response);
         setUsers(response.data.data);
-        setNumOfPage(response.data.lastPage);
+        setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
       .catch((err) => {
@@ -108,31 +127,54 @@ const UserList = () => {
   }, [currentPage, itemsPerPage, searchString, refresh]);
 
   return (
-    <div>
+    <div style={{ padding: 30, width: '100%' }}>
       <div className="mb-3">
-        <Button type="primary" icon={<PlusOutlined />} className="me-2">
+        <Button type="primary" icon={<PlusOutlined />} className="me-2" onClick={onHandleRegister}>
           Add new
         </Button>
         {selectedRows.length > 0 && (
-          <Button type="danger" onClick={handleMultiDelete} icon={<DeleteOutlined />}>
+          <Button
+            type="danger"
+            style={{ marginLeft: 20, background: 'red' }}
+            onClick={handleMultiDelete}
+            icon={<DeleteOutlined />}
+          >
             Delete
           </Button>
         )}
+        <Search
+          placeholder="Email or Name"
+          allowClear
+          enterButton="Search"
+          size="middle"
+          onSearch={(value) => setSearchString(value)}
+          style={{ width: 234, marginLeft: 20 }}
+        />
       </div>
-      <DataTable
-        title="List Users"
-        data={users}
+
+      <Table
+        style={{ marginTop: 20 }}
+        title={() => 'List Users'}
+        dataSource={users}
         columns={columns}
-        numOfPage={numOfPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-        onChangeItemsPerPage={setItemsPerPage}
-        onKeySearch={setSearchString}
-        onSelectedRows={setSelectedRows}
+        pagination={{
+          total: numOfPage,
+          current: currentPage,
+          pageSize: itemsPerPage,
+          onChange: setCurrentPage,
+          onShowSizeChange: setItemsPerPage,
+        }}
+        rowKey="id"
+        rowSelection={{
+          type: 'checkbox',
+          onChange: (selectedRowKeys, selectedRows) => {
+            setSelectedRows(selectedRowKeys);
+          },
+        }}
       />
       <Modal
         title="Confirmation"
-        visible={showModal}
+        open={showModal}
         onCancel={() => setShowModal(false)}
         footer={[
           <Button key="cancel" onClick={() => setShowModal(false)}>

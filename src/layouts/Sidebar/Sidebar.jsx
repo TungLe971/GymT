@@ -12,28 +12,26 @@ const Sidebar = () => {
   const items = [
     {
       label: 'Users',
-      key: 'sub1',
+      key: 'users',
       icon: <MailOutlined />,
-      children: [
-        { label: 'Option 1', key: '1' },
-        { label: 'Option 2', key: '2' },
-        { label: 'Option 3', key: '3' },
-        { label: 'Option 4', key: '4' },
+      items: [
+        { label: 'User List', key: 'user' },
+        { label: 'Post', key: 'post' },
       ],
     },
     {
       label: 'Members',
       key: 'sub2',
       icon: <AppstoreOutlined />,
-      children: [
-        { label: 'Option 5', key: '5' },
-        { label: 'Option 6', key: '6' },
+      items: [
+        { label: 'Member List', key: '5' },
+        { label: 'Schedule', key: '6' },
         {
           label: 'Submenu',
           key: 'sub3',
-          children: [
-            { label: 'Option 7', key: '7' },
-            { label: 'Option 8', key: '8' },
+          items: [
+            { label: 'Health', key: '7' },
+            { label: 'Personal Trainer', key: '8' },
           ],
         },
       ],
@@ -42,9 +40,9 @@ const Sidebar = () => {
       label: 'Staffs',
       key: 'sub4',
       icon: <SettingOutlined />,
-      children: [
-        { label: 'Option 9', key: '9' },
-        { label: 'Option 10', key: '10' },
+      items: [
+        { label: 'Staff List', key: '9' },
+        { label: 'Calendar', key: '10' },
         { label: 'Option 11', key: '11' },
         { label: 'Option 12', key: '12' },
       ],
@@ -53,21 +51,17 @@ const Sidebar = () => {
       label: 'Foods',
       key: 'sub5',
       icon: <MailOutlined />,
-      children: [
-        { label: 'Option 1', key: '12' },
-        { label: 'Option 24', key: '21' },
-        { label: 'Option 3', key: '31' },
-        { label: 'Option 4', key: '41' },
+      items: [
+        { label: 'Food List', key: '31' },
+        { label: 's', key: '41' },
       ],
     },
     {
       label: 'Events',
       key: 'sub6',
       icon: <MailOutlined />,
-      children: [
-        { label: 'Option 11', key: '16' },
-        { label: 'Option 28', key: '142' },
-        { label: 'Option 32', key: '384' },
+      items: [
+        { label: 'Event List', key: '384' },
         { label: 'Option 41', key: '484' },
       ],
     },
@@ -75,22 +69,20 @@ const Sidebar = () => {
       label: 'Equipments',
       key: 'sub7',
       icon: <MailOutlined />,
-      children: [
-        { label: 'Option 1', key: '15' },
+      items: [
+        { label: 'Equipments List', key: '15' },
         { label: 'Option 2', key: '28' },
-        { label: 'Option 3', key: '73' },
-        { label: 'Option 4', key: '74' },
       ],
     },
     {
       label: 'Statistical',
       key: 'sub8',
       icon: <MailOutlined />,
-      children: [
-        { label: 'Option 1', key: '1' },
-        { label: 'Option 2', key: '2' },
-        { label: 'Option 3', key: '3' },
-        { label: 'Option 4', key: '4' },
+      items: [
+        { label: 'Revenue', key: '3' },
+        { label: 'Member', key: '4' },
+        { label: 'Staff', key: '565' },
+        { label: 'Food', key: '4897' },
       ],
     },
   ];
@@ -109,7 +101,7 @@ const Sidebar = () => {
     >
       {items.map((item) => (
         <SubMenu key={item.key} icon={item.icon} title={item.label}>
-          {item.children.map((child) => (
+          {item.items.map((child) => (
             <Menu.Item key={child.key}>
               <Link to={`/${child.key}`}>{child.label}</Link>
             </Menu.Item>
