@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Flex, Menu } from 'antd';
+import { Menu } from 'antd';
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 // import './Sidebar.css';
 
 const { SubMenu } = Menu;
 
 const Sidebar = () => {
-  const [openKeys, setOpenKeys] = useState(['sub1']);
+  const [openKeys, setOpenKeys] = useState(['gymt']);
 
   const items = [
     {
@@ -21,65 +21,74 @@ const Sidebar = () => {
     },
     {
       label: 'Members',
-      key: 'sub2',
+      key: 'members',
       icon: <AppstoreOutlined />,
       items: [
-        { label: 'Member List', key: '5' },
+        { label: 'Member List', key: 'member' },
         { label: 'Schedule', key: '6' },
-        {
-          label: 'Submenu',
-          key: 'sub3',
-          items: [
-            { label: 'Health', key: '7' },
-            { label: 'Personal Trainer', key: '8' },
-          ],
-        },
+        { label: 'Health', key: '7' },
+        { label: 'Personal Trainer', key: '8' },
+      ],
+    },
+    {
+      label: 'Cards',
+      key: 'cards',
+      icon: <AppstoreOutlined />,
+      items: [
+        { label: 'Card List', key: 'card' },
+        { label: 'Card status', key: '6c' },
       ],
     },
     {
       label: 'Staffs',
-      key: 'sub4',
+      key: 'staffs',
       icon: <SettingOutlined />,
       items: [
-        { label: 'Staff List', key: '9' },
+        { label: 'Staff List', key: 'staff' },
         { label: 'Calendar', key: '10' },
         { label: 'Option 11', key: '11' },
         { label: 'Option 12', key: '12' },
       ],
     },
     {
+      label: 'Packages',
+      key: 'packagess',
+      icon: <AppstoreOutlined />,
+      items: [{ label: 'Packages', key: 'packages' }],
+    },
+    {
       label: 'Foods',
-      key: 'sub5',
+      key: 'foods',
       icon: <MailOutlined />,
       items: [
-        { label: 'Food List', key: '31' },
+        { label: 'Food List', key: 'food' },
         { label: 's', key: '41' },
       ],
     },
     {
       label: 'Events',
-      key: 'sub6',
+      key: 'events',
       icon: <MailOutlined />,
       items: [
-        { label: 'Event List', key: '384' },
+        { label: 'Event List', key: 'event' },
         { label: 'Option 41', key: '484' },
       ],
     },
     {
       label: 'Equipments',
-      key: 'sub7',
+      key: 'equipments',
       icon: <MailOutlined />,
       items: [
-        { label: 'Equipments List', key: '15' },
+        { label: 'Equipments List', key: 'equipment' },
         { label: 'Option 2', key: '28' },
       ],
     },
     {
-      label: 'Statistical',
-      key: 'sub8',
+      label: 'Statisticals',
+      key: 'statisticals',
       icon: <MailOutlined />,
       items: [
-        { label: 'Revenue', key: '3' },
+        { label: 'Revenue', key: 'statistical' },
         { label: 'Member', key: '4' },
         { label: 'Staff', key: '565' },
         { label: 'Food', key: '4897' },
@@ -95,9 +104,10 @@ const Sidebar = () => {
   return (
     <Menu
       mode="inline"
+      theme="light"
       openKeys={openKeys}
       onOpenChange={onOpenChange}
-      style={{ display: Flex, width: 256, height: '100vh' }}
+      style={{ width: 256, height: '100vh' }}
     >
       {items.map((item) => (
         <SubMenu key={item.key} icon={item.icon} title={item.label}>

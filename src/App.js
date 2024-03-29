@@ -17,6 +17,12 @@ import Plans from './components/Outside/Plans/Plan';
 import Testimonials from './components/Outside/Testimonials/Testimonials';
 import Join from './components/Outside/Join/Join';
 import Footer from './components/Outside/Footer/Footer';
+import MemberList from './components/Member/MemberList';
+import MemberAdd from './components/Member/MemberAdd';
+import MemberEdit from './components/Member/MemberEdit';
+import PackagesList from './components/Packages/PackagesList';
+import PackagesAdd from './components/Packages/PackagesAdd';
+import PackagesEdit from './components/Packages/PackagesEdit';
 
 function App() {
   return (
@@ -29,6 +35,12 @@ function App() {
               <Route path="/user" element={<UserList />} />
               <Route path="/user/edit/:id" element={<UserEdit />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/member" element={<MemberList />} />
+              <Route path="/member/add" element={<MemberAdd />} />
+              <Route path="/member/edit/:id_hv" element={<MemberEdit />} />
+              <Route path="/packages" element={<PackagesList />} />
+              <Route path="/packages/add" element={<PackagesAdd />} />
+              <Route path="/packages/edit/:id_packages" element={<PackagesEdit />} />
             </Route>
           </Route>
           <Route element={<PublicRoutes />}>

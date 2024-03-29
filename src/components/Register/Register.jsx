@@ -113,7 +113,7 @@ const Register = () => {
                   </div>
                 </div>
                 <div className="mt-4 mb-0">
-                  <button className="btn btn-primary btn-block" onClick={handleSubmit(handleSubmitFormAdd)}>
+                  <button className="btn btn-primary" onClick={handleSubmit(handleSubmitFormAdd)}>
                     Submit
                   </button>
                 </div>

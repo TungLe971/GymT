@@ -4,16 +4,16 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './UserList.css';
+import './PackagesList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const UserList = () => {
+const PackagesList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [users, setUsers] = useState([]);
+  const [packagess, setPackagess] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -27,70 +27,71 @@ const UserList = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'id_packages',
+      key: 'id_packages',
       align: 'center',
     },
     {
+      title: 'Tên gói',
+      dataIndex: 'name_packages',
+      key: 'name_packages',
       align: 'center',
-      title: 'First name',
-      dataIndex: 'first_name',
-      key: 'first_name',
     },
     {
+      title: 'Giá',
+      dataIndex: 'gia_packages',
+      key: 'gia_packages',
       align: 'center',
-      title: 'Last name',
-      dataIndex: 'last_name',
-      key: 'last_name',
     },
     {
+      title: 'Ghi chú',
+      dataIndex: 'note_packages',
+      key: 'note_packages',
       align: 'center',
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
+      width: '300px',
     },
     {
+      title: 'Ngày tạo',
+      dataIndex: 'ngay_tao_packages',
+      key: 'ngay_tao_packages',
       align: 'center',
-      title: 'Created at',
-      dataIndex: 'created_at',
-      key: 'created_at',
     },
     {
+      title: 'Cập Nhật Cuối',
+      dataIndex: 'ngay_cap_nhap_packages',
+      key: 'ngay_cap_nhap_packages',
       align: 'center',
-      title: 'Updated at',
-      dataIndex: 'updated_at',
-      key: 'updated_at',
     },
     {
-      align: 'center',
       title: 'Actions',
       key: 'actions',
+      align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id)}>
-            Edit
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_packages)}>
+            Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id)}>
-            Delete
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_packages)}>
+            Xoá
           </Button>
         </>
       ),
     },
   ];
 
-  const onHandleRegister = () => {
-    navigate('/register');
+  const onHandleAdd = () => {
+    navigate('/packages/add');
   };
 
-  const handleEdit = (id) => {
-    navigate('/user/edit/' + id);
-    console.log('Edit user with id => ', id);
+  const handleEdit = (id_packages) => {
+    navigate('/packages/edit/' + id_packages);
+    console.log('Edit packages with id_packages => ', id_packages);
   };
 
-  const handleDelete = (id) => {
-    console.log('single delete with id => ', id);
+  const handleDelete = (id_packages) => {
+    console.log('single delete with id_packages => ', id_packages);
     setShowModal(true);
-    setDeleteItem(id);
+    setDeleteItem(id_packages);
     setDeleteType('single');
   };
 
@@ -103,7 +104,7 @@ const UserList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/users/multiple?ids=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/packagess/multiple?id_packagess=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -120,10 +121,10 @@ const UserList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/users${query}`, 'GET', [])
+    requestApi(`/packagess${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setUsers(response.data.data);
+        setPackagess(response.data.data);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -136,7 +137,7 @@ const UserList = () => {
   return (
     <div style={{ padding: 30, width: '100%' }}>
       <div className="mb-3">
-        <Button type="primary" icon={<PlusOutlined />} className="me-2" onClick={onHandleRegister}>
+        <Button type="primary" icon={<PlusOutlined />} className="me-2" onClick={onHandleAdd}>
           Add new
         </Button>
         {selectedRows.length > 0 && (
@@ -150,7 +151,7 @@ const UserList = () => {
           </Button>
         )}
         <Search
-          placeholder="Email or Name"
+          placeholder="Name"
           allowClear
           enterButton="Search"
           size="middle"
@@ -161,8 +162,8 @@ const UserList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Users'}
-        dataSource={users}
+        title={() => 'List Packages'}
+        dataSource={packagess}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -171,7 +172,7 @@ const UserList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id"
+        rowKey="id_packages"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -198,4 +199,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default PackagesList;

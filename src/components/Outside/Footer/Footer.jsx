@@ -16,16 +16,16 @@ const Footer = () => {
       <div className="footer">
         <div className="logo-f1">
           <div>
-            <img src={House} alt="" />
-            <span>Số 55 đường Giải Phóng, Hai Bà Trưng, Hà Nội.</span>
-          </div>
-          <div>
             <img src={SĐT} alt="" />
             <span>0397439202</span>
           </div>
           <div>
             <img src={Mail} alt="" />
             <span>lmt3997@gmail.com</span>
+          </div>
+          <div>
+            <img src={House} alt="" />
+            <span>Số 55 đường Giải Phóng, Hai Bà Trưng, Hà Nội.</span>
           </div>
         </div>
         <div className="logo-f">
