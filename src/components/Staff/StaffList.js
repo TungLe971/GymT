@@ -4,16 +4,16 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './MemberList.css';
+import './StaffList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const MemberList = () => {
+const StaffList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [members, setMembers] = useState([]);
+  const [staffs, setStaffs] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -27,81 +27,75 @@ const MemberList = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id_hv',
-      key: 'id_hv',
+      dataIndex: 'id_nv',
+      key: 'id_nv',
       align: 'center',
     },
     {
       title: 'Tên',
-      dataIndex: 'name_hv',
-      key: 'name_hv',
+      dataIndex: 'name_nv',
+      key: 'name_nv',
       align: 'center',
     },
     {
       title: 'Email',
-      dataIndex: 'email_hv',
-      key: 'email_hv',
+      dataIndex: 'email_nv',
+      key: 'email_nv',
       align: 'center',
     },
     {
       title: 'Ngày sinh',
-      dataIndex: 'ngay_sinh_hv',
-      key: 'ngay_sinh_hv',
-      align: 'center',
+      dataIndex: 'ngay_sinh_nv',
+      key: 'ngay_sinh_nv',
       render: (text) => <span>{text ? new Date(text).toLocaleDateString() : ''}</span>,
+      align: 'center',
     },
     {
       title: 'Giới tính',
-      dataIndex: 'gioi_tinh_hv',
-      key: 'gioi_tinh_hv',
+      dataIndex: 'gioi_tinh_nv',
+      key: 'gioi_tinh_nv',
       align: 'center',
     },
     {
       title: 'Tuổi',
-      dataIndex: 'tuoi_hv',
-      key: 'tuoi_hv',
+      dataIndex: 'tuoi_nv',
+      key: 'tuoi_nv',
       align: 'center',
     },
     {
       title: 'SĐT',
-      dataIndex: 'sdt_hv',
-      key: 'sdt_hv',
+      dataIndex: 'sdt_nv',
+      key: 'sdt_nv',
       align: 'center',
     },
     {
       title: 'TCCCD',
-      dataIndex: 'tcccd_hv',
-      key: 'tcccd_hv',
+      dataIndex: 'tcccd_nv',
+      key: 'tcccd_nv',
       align: 'center',
     },
     {
-      title: 'Tích luỹ',
-      dataIndex: 'diem_tich_luy',
-      key: 'diem_tich_luy',
+      title: 'Chức vụ',
+      dataIndex: 'chuc_vu',
+      key: 'chuc_vu',
       align: 'center',
     },
-    // {
-    //   title: 'Ngày tạo',
-    //   dataIndex: 'ngay_tao_hv',
-    //   key: 'ngay_tao_hv',
-    // render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
-    // },
-    // {
-    //   title: 'Cập Nhật Cuối',
-    //   dataIndex: 'ngay_cap_nhap_hv',
-    //   key: 'ngay_cap_nhap_hv',
-    // render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
-    // },
+    {
+      title: 'Địa chỉ',
+      dataIndex: 'dia_chi_nv',
+      key: 'dia_chi_nv',
+      align: 'center',
+    },
     {
       title: 'Actions',
       key: 'actions',
       align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_hv)}>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_nv)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_hv)}>
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_nv)}>
             Xoá
           </Button>
         </>
@@ -110,18 +104,18 @@ const MemberList = () => {
   ];
 
   const onHandleAdd = () => {
-    navigate('/member/add');
+    navigate('/staff/add');
   };
 
-  const handleEdit = (id_hv) => {
-    navigate('/member/edit/' + id_hv);
-    console.log('Edit member with id_hv => ', id_hv);
+  const handleEdit = (id_nv) => {
+    navigate('/staff/edit/' + id_nv);
+    console.log('Edit staff with id_nv => ', id_nv);
   };
 
-  const handleDelete = (id_hv) => {
-    console.log('single delete with id_hv => ', id_hv);
+  const handleDelete = (id_nv) => {
+    console.log('single delete with id_nv => ', id_nv);
     setShowModal(true);
-    setDeleteItem(id_hv);
+    setDeleteItem(id_nv);
     setDeleteType('single');
   };
 
@@ -134,7 +128,7 @@ const MemberList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/members/multiple?id_hvs=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/staffs/multiple?id_nvs=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -151,10 +145,10 @@ const MemberList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/members${query}`, 'GET', [])
+    requestApi(`/staffs${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setMembers(response.data.data);
+        setStaffs(response.data.data);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -192,8 +186,8 @@ const MemberList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Member'}
-        dataSource={members}
+        title={() => 'List Staff'}
+        dataSource={staffs}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -202,7 +196,7 @@ const MemberList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_hv"
+        rowKey="id_nv"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -229,4 +223,4 @@ const MemberList = () => {
   );
 };
 
-export default MemberList;
+export default StaffList;

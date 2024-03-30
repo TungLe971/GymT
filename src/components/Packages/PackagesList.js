@@ -42,6 +42,7 @@ const PackagesList = () => {
       dataIndex: 'gia_packages',
       key: 'gia_packages',
       align: 'center',
+      render: (text) => <span>{text}K</span>,
     },
     {
       title: 'Ghi chú',
@@ -55,12 +56,14 @@ const PackagesList = () => {
       dataIndex: 'ngay_tao_packages',
       key: 'ngay_tao_packages',
       align: 'center',
+      render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
       title: 'Cập Nhật Cuối',
       dataIndex: 'ngay_cap_nhap_packages',
       key: 'ngay_cap_nhap_packages',
       align: 'center',
+      render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
       title: 'Actions',

@@ -54,12 +54,14 @@ const UserList = () => {
       title: 'Created at',
       dataIndex: 'created_at',
       key: 'created_at',
+      render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
       align: 'center',
       title: 'Updated at',
       dataIndex: 'updated_at',
       key: 'updated_at',
+      render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
       align: 'center',

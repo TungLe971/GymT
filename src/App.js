@@ -23,6 +23,9 @@ import MemberEdit from './components/Member/MemberEdit';
 import PackagesList from './components/Packages/PackagesList';
 import PackagesAdd from './components/Packages/PackagesAdd';
 import PackagesEdit from './components/Packages/PackagesEdit';
+import StaffList from './components/Staff/StaffList';
+import StaffAdd from './components/Staff/StaffAdd';
+import StaffEdit from './components/Staff/StaffEdit';
 
 function App() {
   return (
@@ -38,6 +41,9 @@ function App() {
               <Route path="/member" element={<MemberList />} />
               <Route path="/member/add" element={<MemberAdd />} />
               <Route path="/member/edit/:id_hv" element={<MemberEdit />} />
+              <Route path="/staff" element={<StaffList />} />
+              <Route path="/staff/add" element={<StaffAdd />} />
+              <Route path="/staff/edit/:id_nv" element={<StaffEdit />} />
               <Route path="/packages" element={<PackagesList />} />
               <Route path="/packages/add" element={<PackagesAdd />} />
               <Route path="/packages/edit/:id_packages" element={<PackagesEdit />} />

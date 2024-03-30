@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { message, Form, Input, Button } from 'antd';
+import { message } from 'antd';
 import requestApi from '../../helpers/api';
 import * as actions from '../../redux/actions';
 
@@ -10,7 +10,12 @@ const PackagesEdit = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { handleSubmit, setValue } = useForm();
+  const {
+    register,
+    setValue,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   useEffect(() => {
     dispatch(actions.controlLoading(true));
@@ -28,7 +33,7 @@ const PackagesEdit = () => {
     }
   }, [dispatch, params.id_packages, setValue]);
 
-  const onSubmit = async (data) => {
+  const handleSubmitFormUpdate = async (data) => {
     dispatch(actions.controlLoading(true));
     try {
       const res = await requestApi(`/packagess/${params.id_packages}`, 'PUT', data);
@@ -43,43 +48,43 @@ const PackagesEdit = () => {
   };
 
   return (
-    <div className="bg-primary">
-      <div className="container">
-        <div className="card-header">
-          <h3 className="text-henter" style={{ color: 'white', fontSize: '2.5rem', marginBottom: '-5px' }}>
+    <div className="bg-primary2">
+      <div className="container2">
+        <div className="card-header2">
+          <h3 className="text-henter2" style={{ color: 'white', fontSize: '2.5rem', marginBottom: '-4px' }}>
             Update Packages
           </h3>
         </div>
-        <div className="card-body1">
-          <div className="label-add">
+        <div className="card-body2">
+          <div className="label-edit2 label-pg-edit2">
             <label>Name:</label>
             <label>Giá:</label>
             <label>Ghi chú:</label>
           </div>
-          <div className="input-add">
-            <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-              <Form.Item name="name_packages" rules={[{ required: true, message: 'Name is required' }]}>
-                <Input placeholder="Enter your name" />
-              </Form.Item>
+          <div className="input-edit2">
+            <input
+              {...register('name_packages', { required: { value: true, message: 'Name is required' } })}
+              placeholder="Enter your name"
+            />
+            {errors.name_packages && <p>{errors.name_packages.message}</p>}
 
-              <Form.Item name="gia_packages" rules={[{ required: true, message: 'Giá is required' }]}>
-                <Input placeholder="Enter your age" type="number" />
-              </Form.Item>
+            <input
+              {...register('gia_packages', { required: { value: true, message: 'Price is required' } })}
+              type="num"
+            />
+            {errors.gia_packages && <p>{errors.gia_packages.message}</p>}
 
-              <Form.Item name="note_packages" rules={[{ required: true, message: 'Note is required' }]}>
-                <Input.TextArea
-                  className="input_note"
-                  placeholder="Enter your note"
-                  autoSize={{ minRows: 3, maxRows: 6 }}
-                />
-              </Form.Item>
+            <textarea
+              {...register('note_packages', { required: { value: true, message: 'Note is required' } })}
+              placeholder="Enter your note"
+              style={{ minHeight: '8em', maxHeight: '15rem', width: '295px' }}
+            />
 
-              <Form.Item className="it_end">
-                <Button className="btn-primary1" type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
-            </Form>
+            {errors.note_packages && <p>{errors.note_packages.message}</p>}
+
+            <button className="btn-primary2" onClick={handleSubmit(handleSubmitFormUpdate)} type="submit">
+              Submit
+            </button>
           </div>
         </div>
       </div>
