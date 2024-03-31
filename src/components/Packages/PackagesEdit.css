@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin-top: 8px;
+  margin-top: 7px;
   width: 10rem;
 }
 
@@ -37,7 +37,7 @@
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
-  width: 8rem;
+  width: 10rem;
 }
 
 .input-edit2 input {

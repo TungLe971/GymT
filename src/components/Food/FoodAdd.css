@@ -1,4 +1,4 @@
-.bg-primary {
+.bg-primary1 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,7 @@
   padding: 20px;
 }
 
-.label-add {
+.label-add1 {
   display: flex;
   flex-direction: column;
   gap: 1.95rem;
@@ -39,6 +39,6 @@
   margin-left: 12rem;
 }
 
-.it_end {
+.it_end1 {
   margin-bottom: 0;
 }

@@ -4,16 +4,16 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './StaffList.css';
+// import './foodList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const StaffList = () => {
+const FoodList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [staffs, setStaffs] = useState([]);
+  const [foods, setFoods] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -27,75 +27,74 @@ const StaffList = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id_nv',
-      key: 'id_nv',
+      dataIndex: 'id_food',
+      key: 'id_food',
       align: 'center',
     },
     {
       title: 'Tên',
-      dataIndex: 'name_nv',
-      key: 'name_nv',
+      dataIndex: 'name_food',
+      key: 'name_food',
       align: 'center',
     },
     {
-      title: 'Email',
-      dataIndex: 'email_nv',
-      key: 'email_nv',
+      title: 'Lượng Nhập',
+      dataIndex: 'so_luong_nhap_food',
+      key: 'so_luong_nhap_food',
       align: 'center',
     },
     {
-      title: 'Ngày sinh',
-      dataIndex: 'ngay_sinh_nv',
-      key: 'ngay_sinh_nv',
-      align: 'center',
-      // render: (text) => <span>{text ? new Date(text).toLocaleDateString() : ''}</span>,
-    },
-    {
-      title: 'Giới tính',
-      dataIndex: 'gioi_tinh_nv',
-      key: 'gioi_tinh_nv',
+      title: 'Lượng Còn',
+      dataIndex: 'so_luong_con_food',
+      key: 'so_luong_con_food',
       align: 'center',
     },
     {
-      title: 'Tuổi',
-      dataIndex: 'tuoi_nv',
-      key: 'tuoi_nv',
+      title: 'Loại',
+      dataIndex: 'loai_food',
+      key: 'loai_food',
       align: 'center',
     },
     {
-      title: 'SĐT',
-      dataIndex: 'sdt_nv',
-      key: 'sdt_nv',
+      title: 'Giá Nhập',
+      dataIndex: 'gia_nhap_food',
+      key: 'gia_nhap_food',
       align: 'center',
     },
     {
-      title: 'TCCCD',
-      dataIndex: 'tcccd_nv',
-      key: 'tcccd_nv',
+      title: 'Giá Bán',
+      dataIndex: 'gia_ban_food',
+      key: 'gia_ban_food',
       align: 'center',
     },
     {
-      title: 'Chức vụ',
-      dataIndex: 'chuc_vu',
-      key: 'chuc_vu',
+      title: 'Ghi chú',
+      dataIndex: 'note_food',
+      key: 'note_food',
       align: 'center',
     },
-    {
-      title: 'Địa chỉ',
-      dataIndex: 'dia_chi_nv',
-      key: 'dia_chi_nv',
-      align: 'center',
-    },
+    // {
+    //   title: 'Ngày tạo',
+    //   dataIndex: 'ngay_tao_food',
+    //   key: 'ngay_tao_food',
+    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
+    // },
+    // {
+    //   title: 'Cập Nhật Cuối',
+    //   dataIndex: 'ngay_cap_nhap_food',
+    //   key: 'ngay_cap_nhap_food',
+    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
+    // },
     {
       title: 'Actions',
       key: 'actions',
       align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_nv)}>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_food)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_nv)}>
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_food)}>
             Xoá
           </Button>
         </>
@@ -104,18 +103,18 @@ const StaffList = () => {
   ];
 
   const onHandleAdd = () => {
-    navigate('/staff/add');
+    navigate('/food/add');
   };
 
-  const handleEdit = (id_nv) => {
-    navigate('/staff/edit/' + id_nv);
-    console.log('Edit staff with id_nv => ', id_nv);
+  const handleEdit = (id_food) => {
+    navigate('/food/edit/' + id_food);
+    console.log('Edit food with id_food => ', id_food);
   };
 
-  const handleDelete = (id_nv) => {
-    console.log('single delete with id_nv => ', id_nv);
+  const handleDelete = (id_food) => {
+    console.log('single delete with id_food => ', id_food);
     setShowModal(true);
-    setDeleteItem(id_nv);
+    setDeleteItem(id_food);
     setDeleteType('single');
   };
 
@@ -128,7 +127,7 @@ const StaffList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/staffs/multiple?id_nvs=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/foods/multiple?id_foods=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -145,10 +144,10 @@ const StaffList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/staffs${query}`, 'GET', [])
+    requestApi(`/foods${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setStaffs(response.data.data);
+        setFoods(response.data.data);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -186,8 +185,8 @@ const StaffList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Staff'}
-        dataSource={staffs}
+        title={() => 'List Food'}
+        dataSource={foods}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -196,7 +195,7 @@ const StaffList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_nv"
+        rowKey="id_food"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -223,4 +222,4 @@ const StaffList = () => {
   );
 };
 
-export default StaffList;
+export default FoodList;

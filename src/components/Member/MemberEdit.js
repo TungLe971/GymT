@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import requestApi from '../../helpers/api';
 import { message } from 'antd';
+import './MemberEdit.css';
 
 const MemberEdit = () => {
   const params = useParams();

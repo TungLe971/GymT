@@ -75,12 +75,10 @@ const PackagesEdit = () => {
             {errors.gia_packages && <p>{errors.gia_packages.message}</p>}
 
             <textarea
-              {...register('note_packages', { required: { value: true, message: 'Note is required' } })}
+              {...register('note_packages')}
               placeholder="Enter your note"
               style={{ minHeight: '8em', maxHeight: '15rem', width: '295px' }}
             />
-
-            {errors.note_packages && <p>{errors.note_packages.message}</p>}
 
             <button className="btn-primary2" onClick={handleSubmit(handleSubmitFormUpdate)} type="submit">
               Submit

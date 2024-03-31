@@ -4,16 +4,16 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './StaffList.css';
+// import './EquipmentList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const StaffList = () => {
+const EquipmentList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [staffs, setStaffs] = useState([]);
+  const [equipments, setEquipments] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -27,75 +27,68 @@ const StaffList = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id_nv',
-      key: 'id_nv',
+      dataIndex: 'id_equipment',
+      key: 'id_equipment',
       align: 'center',
     },
     {
       title: 'Tên',
-      dataIndex: 'name_nv',
-      key: 'name_nv',
+      dataIndex: 'name_equipment',
+      key: 'name_equipment',
       align: 'center',
     },
     {
-      title: 'Email',
-      dataIndex: 'email_nv',
-      key: 'email_nv',
+      title: 'Số Lượng',
+      dataIndex: 'so_luong_equipment',
+      key: 'so_luong_equipment',
       align: 'center',
     },
     {
-      title: 'Ngày sinh',
-      dataIndex: 'ngay_sinh_nv',
-      key: 'ngay_sinh_nv',
-      align: 'center',
-      // render: (text) => <span>{text ? new Date(text).toLocaleDateString() : ''}</span>,
-    },
-    {
-      title: 'Giới tính',
-      dataIndex: 'gioi_tinh_nv',
-      key: 'gioi_tinh_nv',
+      title: 'Loại',
+      dataIndex: 'loai_equipment',
+      key: 'loai_equipment',
       align: 'center',
     },
     {
-      title: 'Tuổi',
-      dataIndex: 'tuoi_nv',
-      key: 'tuoi_nv',
+      title: 'Giá',
+      dataIndex: 'gia_equipment',
+      key: 'gia_equipment',
       align: 'center',
     },
     {
-      title: 'SĐT',
-      dataIndex: 'sdt_nv',
-      key: 'sdt_nv',
+      title: 'Trạng thái',
+      dataIndex: 'status_equipment',
+      key: 'status_equipment',
       align: 'center',
     },
     {
-      title: 'TCCCD',
-      dataIndex: 'tcccd_nv',
-      key: 'tcccd_nv',
+      title: 'Ghi chú',
+      dataIndex: 'note_equipment',
+      key: 'note_equipment',
       align: 'center',
     },
-    {
-      title: 'Chức vụ',
-      dataIndex: 'chuc_vu',
-      key: 'chuc_vu',
-      align: 'center',
-    },
-    {
-      title: 'Địa chỉ',
-      dataIndex: 'dia_chi_nv',
-      key: 'dia_chi_nv',
-      align: 'center',
-    },
+    // {
+    //   title: 'Ngày tạo',
+    //   dataIndex: 'ngay_tao_equipment',
+    //   key: 'ngay_tao_equipment',
+    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
+    // },
+    // {
+    //   title: 'Cập Nhật Cuối',
+    //   dataIndex: 'ngay_cap_nhap_equipment',
+    //   key: 'ngay_cap_nhap_equipment',
+    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
+    // },
     {
       title: 'Actions',
       key: 'actions',
       align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_nv)}>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_equipment)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_nv)}>
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_equipment)}>
             Xoá
           </Button>
         </>
@@ -104,18 +97,18 @@ const StaffList = () => {
   ];
 
   const onHandleAdd = () => {
-    navigate('/staff/add');
+    navigate('/equipment/add');
   };
 
-  const handleEdit = (id_nv) => {
-    navigate('/staff/edit/' + id_nv);
-    console.log('Edit staff with id_nv => ', id_nv);
+  const handleEdit = (id_equipment) => {
+    navigate('/equipment/edit/' + id_equipment);
+    console.log('Edit equipment with id_equipment => ', id_equipment);
   };
 
-  const handleDelete = (id_nv) => {
-    console.log('single delete with id_nv => ', id_nv);
+  const handleDelete = (id_equipment) => {
+    console.log('single delete with id_equipment => ', id_equipment);
     setShowModal(true);
-    setDeleteItem(id_nv);
+    setDeleteItem(id_equipment);
     setDeleteType('single');
   };
 
@@ -128,7 +121,7 @@ const StaffList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/staffs/multiple?id_nvs=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/equipments/multiple?id_equipments=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -145,10 +138,10 @@ const StaffList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/staffs${query}`, 'GET', [])
+    requestApi(`/equipments${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setStaffs(response.data.data);
+        setEquipments(response.data.data);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -186,8 +179,8 @@ const StaffList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Staff'}
-        dataSource={staffs}
+        title={() => 'List Equipment'}
+        dataSource={equipments}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -196,7 +189,7 @@ const StaffList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_nv"
+        rowKey="id_equipment"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -223,4 +216,4 @@ const StaffList = () => {
   );
 };
 
-export default StaffList;
+export default EquipmentList;

@@ -26,6 +26,12 @@ import PackagesEdit from './components/Packages/PackagesEdit';
 import StaffList from './components/Staff/StaffList';
 import StaffAdd from './components/Staff/StaffAdd';
 import StaffEdit from './components/Staff/StaffEdit';
+import EquipmentList from './components/Equipment/EquipmentList';
+import EquipmentAdd from './components/Equipment/EquipmentAdd';
+import EquipmentEdit from './components/Equipment/EquipmentEdit';
+import FoodList from './components/Food/FoodList';
+import FoodAdd from './components/Food/FoodAdd';
+import FoodEdit from './components/Food/FoodEdit';
 
 function App() {
   return (
@@ -47,6 +53,12 @@ function App() {
               <Route path="/packages" element={<PackagesList />} />
               <Route path="/packages/add" element={<PackagesAdd />} />
               <Route path="/packages/edit/:id_packages" element={<PackagesEdit />} />
+              <Route path="/equipment" element={<EquipmentList />} />
+              <Route path="/equipment/add" element={<EquipmentAdd />} />
+              <Route path="/equipment/edit/:id_equipment" element={<EquipmentEdit />} />
+              <Route path="/food" element={<FoodList />} />
+              <Route path="/food/add" element={<FoodAdd />} />
+              <Route path="/food/edit/:id_food" element={<FoodEdit />} />
             </Route>
           </Route>
           <Route element={<PublicRoutes />}>

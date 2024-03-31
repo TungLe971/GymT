@@ -20,7 +20,7 @@
   flex-direction: column;
   gap: 1.79rem;
   margin-right: 20px;
-  margin-top: 1rem;
+  margin-top: 0.9rem;
 }
 
 .input-edit2 {
@@ -37,7 +37,7 @@
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
-  width: 8rem;
+  width: 10rem;
 }
 
 .input-edit2 input {
