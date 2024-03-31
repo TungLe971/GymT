@@ -23,7 +23,15 @@ const FoodEdit = () => {
       dispatch(actions.controlLoading(true));
       try {
         const res = await requestApi(`/foods/${params.id_food}`, 'GET');
-        const fields = ['name_food', 'so_luong_food', 'loai_food', 'gia_food', 'status_food', 'note_food'];
+        const fields = [
+          'name_food',
+          'so_luong_nhap_food',
+          'so_luong_con_food',
+          'loai_food',
+          'gia_nhap_food',
+          'gia_ban_food',
+          'note_food',
+        ];
         fields.forEach((field) => setValue(field, res.data[field]));
         dispatch(actions.controlLoading(false));
       } catch (error) {
