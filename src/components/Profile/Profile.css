@@ -1,0 +1,45 @@
+.profile-bg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(241, 252, 255);
+  border-radius: 50px;
+  height: 70vh;
+  margin: auto;
+}
+
+.profile-bg h2 {
+  margin-top: auto;
+  color: rgb(231, 182, 133);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  top: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+
+.profile-up {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3rem;
+  margin-left: 3rem;
+}
+
+.profile-btn {
+  display: flex;
+  gap: 5rem;
+  margin-top: 20px;
+}
+
+.profile-btn button {
+  color: white;
+  width: 150px;
+  background-color: rgb(42, 159, 255);
+}

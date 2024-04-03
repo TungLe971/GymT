@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="logo-f">
-          <a href="https://github.com/TungLe971/GymT.git" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/TungLe971" target="_blank" rel="noopener noreferrer">
             <img src={Github} alt="" />
           </a>
           <a href="https://www.instagram.com/tungmle39/" target="_blank" rel="noopener noreferrer">

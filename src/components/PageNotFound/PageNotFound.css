@@ -1,0 +1,72 @@
+.content-404 selection {
+  background: rgba(137, 160, 178, 0.3);
+}
+
+.page-404 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+  z-index: 1;
+  background: #0d0c1e;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.content-404 {
+  text-align: center;
+  padding-top: 100px;
+  color: #cdd4de;
+}
+
+.content-404 h1 {
+  font-weight: 900;
+  font-size: 165px;
+  line-height: 1;
+  margin-bottom: -10px;
+  opacity: 0.6;
+}
+
+.content-404 h2 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+.content-404 p {
+  font-weight: 300;
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 50px;
+}
+
+.link-404 {
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background-color: transparent;
+  padding: 8px 16px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.link-404:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.page-404 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  transform: scale(1.1);
+}

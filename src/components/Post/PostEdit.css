@@ -1,0 +1,75 @@
+.bg-primary2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: -1.5rem;
+}
+
+.card-body2 {
+  display: flex;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  width: 30rem;
+}
+
+.label-edit2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin-right: 20px;
+  margin-top: 6px;
+}
+
+.input-edit2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 10rem;
+}
+
+.label-edit2 label {
+  color: rgb(231, 182, 133);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  pointer-events: none;
+  width: 10rem;
+}
+
+.input-edit2 input {
+  width: 282px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.input-edit2 select {
+  width: 300px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.input-edit2 p {
+  width: 300px;
+  margin-top: -1.3rem;
+  margin-bottom: -1.1rem;
+  color: red;
+}
+
+.btn-primary2 {
+  width: 200px;
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary2:hover {
+  background-color: #0056b3;
+}

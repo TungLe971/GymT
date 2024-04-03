@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import {
+  RocketFilled,
+  QqCircleFilled,
+  PieChartFilled,
+  CreditCardFilled,
+  StarFilled,
+  TagFilled,
+  HeartFilled,
+  SlackCircleFilled,
+  CrownFilled,
+} from '@ant-design/icons';
 // import './Sidebar.css';
 
 const { SubMenu } = Menu;
@@ -13,7 +23,7 @@ const Sidebar = () => {
     {
       label: 'Users',
       key: 'users',
-      icon: <MailOutlined />,
+      icon: <RocketFilled />,
       items: [
         { label: 'User List', key: 'user' },
         { label: 'Post', key: 'post' },
@@ -22,7 +32,7 @@ const Sidebar = () => {
     {
       label: 'Members',
       key: 'members',
-      icon: <AppstoreOutlined />,
+      icon: <CrownFilled />,
       items: [
         { label: 'Member List', key: 'member' },
         { label: 'Schedule', key: '6' },
@@ -33,7 +43,7 @@ const Sidebar = () => {
     {
       label: 'Cards',
       key: 'cards',
-      icon: <AppstoreOutlined />,
+      icon: <CreditCardFilled />,
       items: [
         { label: 'Card List', key: 'card' },
         { label: 'Card status', key: '6c' },
@@ -42,7 +52,7 @@ const Sidebar = () => {
     {
       label: 'Staffs',
       key: 'staffs',
-      icon: <SettingOutlined />,
+      icon: <QqCircleFilled />,
       items: [
         { label: 'Staff List', key: 'staff' },
         { label: 'Calendar', key: '10' },
@@ -53,13 +63,13 @@ const Sidebar = () => {
     {
       label: 'Packages',
       key: 'packagess',
-      icon: <AppstoreOutlined />,
+      icon: <TagFilled />,
       items: [{ label: 'Packages', key: 'packages' }],
     },
     {
       label: 'Foods',
       key: 'foods',
-      icon: <MailOutlined />,
+      icon: <HeartFilled />,
       items: [
         { label: 'Food List', key: 'food' },
         { label: 's', key: '41' },
@@ -68,7 +78,7 @@ const Sidebar = () => {
     {
       label: 'Events',
       key: 'events',
-      icon: <MailOutlined />,
+      icon: <StarFilled />,
       items: [
         { label: 'Event List', key: 'event' },
         { label: 'Option 41', key: '484' },
@@ -77,7 +87,7 @@ const Sidebar = () => {
     {
       label: 'Equipments',
       key: 'equipments',
-      icon: <MailOutlined />,
+      icon: <SlackCircleFilled />,
       items: [
         { label: 'Equipments List', key: 'equipment' },
         { label: 'Option 2', key: '28' },
@@ -86,7 +96,7 @@ const Sidebar = () => {
     {
       label: 'Statisticals',
       key: 'statisticals',
-      icon: <MailOutlined />,
+      icon: <PieChartFilled />,
       items: [
         { label: 'Revenue', key: 'statistical' },
         { label: 'Member', key: '4' },

@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Main from './layouts/Main';
 import Dashboard from './components/Dashboard/Dashboard';
 import Login from './components/Login/Login';
-import Register from './components/Register/Register';
+import Register from './components/user/Register';
 import PrivateRoutes from './layouts/PrivateRoutes';
 import PublicRoutes from './layouts/PublicRoutes';
 import Layout from './layouts/Layout';
@@ -32,6 +32,8 @@ import EquipmentEdit from './components/Equipment/EquipmentEdit';
 import FoodList from './components/Food/FoodList';
 import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
+import PageNotFound from './components/PageNotFound/PageNotFound';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
           <Route path="/" element={<Main />}>
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/profile" element={<Profile />} />
+
               <Route path="/user" element={<UserList />} />
               <Route path="/user/edit/:id" element={<UserEdit />} />
               <Route path="/register" element={<Register />} />
@@ -64,6 +68,7 @@ function App() {
           <Route element={<PublicRoutes />}>
             <Route path="/login" element={<Login />} />
           </Route>
+          <Route path="*" element={<PageNotFound />}></Route>
         </Route>
       </Routes>
       <div className="App">
