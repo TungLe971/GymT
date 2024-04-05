@@ -12,7 +12,7 @@ import {
   SlackCircleFilled,
   CrownFilled,
 } from '@ant-design/icons';
-// import './Sidebar.css';
+import './Sidebar.css';
 
 const { SubMenu } = Menu;
 
@@ -35,7 +35,7 @@ const Sidebar = () => {
       icon: <CrownFilled />,
       items: [
         { label: 'Member List', key: 'member' },
-        { label: 'Schedule', key: '6' },
+        { label: 'Schedule', key: 'schedule' },
         { label: 'Health', key: '7' },
         { label: 'Personal Trainer', key: '8' },
       ],
@@ -113,6 +113,7 @@ const Sidebar = () => {
 
   return (
     <Menu
+      className="sidebar"
       mode="inline"
       theme="light"
       openKeys={openKeys}

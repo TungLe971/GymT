@@ -51,6 +51,13 @@ const UserList = () => {
     },
     {
       align: 'center',
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status) => <span>{status === 1 ? 'Active' : 'Inactive'}</span>,
+    },
+    {
+      align: 'center',
       title: 'Created at',
       dataIndex: 'created_at',
       key: 'created_at',

@@ -72,7 +72,7 @@ const Dashboard = () => {
                   style={{ width: 240, height: 170, background: 'rgb(189, 202, 0)' }}
                   extra={<Badge count={dashboardData.totalPost} />}
                 >
-                  <Meta title={<Link to="/posts">View Details </Link>} />
+                  <Meta title={<Link to="/post">View Details </Link>} />
                 </Card>
               </div>
             </div>

@@ -65,7 +65,7 @@ const Header = () => {
         />
 
         <Dropdown trigger={['click']} overlay={menu} placement="bottomRight" arrow>
-          <Avatar size="medium" icon={<UserOutlined />} className="ant-dropdown-link" />
+          <Avatar style={{ cursor: 'pointer' }} size="medium" icon={<UserOutlined />} className="ant-dropdown-link" />
         </Dropdown>
       </div>
     </AntHeader>

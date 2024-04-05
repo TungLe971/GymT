@@ -1,4 +1,4 @@
-.bg-primary2 {
+.bg-primary-post-ed {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,60 +7,60 @@
   margin-top: -1.5rem;
 }
 
-.card-body2 {
+.card-body-post-ed {
   display: flex;
   border-radius: 10px;
   padding: 20px;
   background-color: white;
-  width: 30rem;
+  width: 42rem;
 }
 
-.label-edit2 {
+.label-edit-post-ed {
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: 1.8rem;
   margin-right: 20px;
   margin-top: 6px;
 }
 
-.input-edit2 {
+.input-edit-post-ed {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   width: 10rem;
 }
 
-.label-edit2 label {
+.label-edit-post-ed label {
   color: rgb(231, 182, 133);
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
   width: 10rem;
 }
 
-.input-edit2 input {
+.input-edit-post-ed input {
   width: 282px;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
-.input-edit2 select {
+.input-edit-post-ed select {
   width: 300px;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
-.input-edit2 p {
+.input-edit-post-ed p {
   width: 300px;
   margin-top: -1.3rem;
   margin-bottom: -1.1rem;
   color: red;
 }
 
-.btn-primary2 {
+.btn-primary-post-ed {
   width: 200px;
   padding: 0.5rem;
   background-color: #007bff;
@@ -70,6 +70,6 @@
   cursor: pointer;
 }
 
-.btn-primary2:hover {
+.btn-primary-post-ed:hover {
   background-color: #0056b3;
 }

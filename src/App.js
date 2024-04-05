@@ -8,6 +8,9 @@ import Register from './components/user/Register';
 import PrivateRoutes from './layouts/PrivateRoutes';
 import PublicRoutes from './layouts/PublicRoutes';
 import Layout from './layouts/Layout';
+import PostList from './components/Post/PostList';
+import PostEdit from './components/Post/PostEdit';
+import PostAdd from './components/Post/PostAdd';
 import UserList from './components/user/UserList';
 import UserEdit from './components/user/UserEdit';
 import Home from './components/Outside/Home/Home';
@@ -44,6 +47,9 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/post" element={<PostList />} />
+              <Route path="/post/add" element={<PostAdd />} />
+              <Route path="/post/edit/:id" element={<PostEdit />} />
 
               <Route path="/user" element={<UserList />} />
               <Route path="/user/edit/:id" element={<UserEdit />} />

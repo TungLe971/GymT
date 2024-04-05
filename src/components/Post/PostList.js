@@ -16,7 +16,7 @@ const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(6);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
   const [searchString, setSearchString] = useState('');
   const [selectedRows, setSelectedRows] = useState([]);
   const [deleteItem, setDeleteItem] = useState(null);
@@ -27,41 +27,62 @@ const PostList = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id_post',
-      key: 'id_post',
+      dataIndex: 'id',
+      key: 'id',
       align: 'center',
     },
     {
-      title: 'Tên gói',
-      dataIndex: 'name_post',
-      key: 'name_post',
+      title: 'Tiêu đề',
+      dataIndex: 'title',
+      key: 'title',
       align: 'center',
     },
     {
-      title: 'Giá',
-      dataIndex: 'gia_post',
-      key: 'gia_post',
+      title: 'Tóm tắt',
+      dataIndex: 'summary',
+      key: 'summary',
       align: 'center',
-      render: (text) => <span>{text}K</span>,
+      maxWidth: '200px',
+    },
+    // {
+    //   title: 'Mô tả',
+    //   dataIndex: 'description',
+    //   key: 'description',
+    //   align: 'center',
+    //   maxWidth: '200px',
+    // },
+    {
+      title: 'Ảnh',
+      dataIndex: 'thumbnail',
+      key: 'thumbnail',
+      align: 'center',
+      width: '200px',
+      render: (thumbnail) => (
+        <img
+          src={thumbnail ? `${process.env.REACT_APP_API_URL}/${thumbnail}` : ''}
+          alt="Ảnh"
+          style={{ maxHeight: 50 }}
+        />
+      ),
     },
     {
-      title: 'Ghi chú',
-      dataIndex: 'note_post',
-      key: 'note_post',
       align: 'center',
-      width: '300px',
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status) => <span>{status === 1 ? 'Active' : 'Inactive'}</span>,
     },
     {
       title: 'Ngày tạo',
-      dataIndex: 'ngay_tao_post',
-      key: 'ngay_tao_post',
+      dataIndex: 'created_at',
+      key: 'created_at',
       align: 'center',
       render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
       title: 'Cập Nhật Cuối',
-      dataIndex: 'ngay_cap_nhap_post',
-      key: 'ngay_cap_nhap_post',
+      dataIndex: 'updated_at',
+      key: 'updated_at',
       align: 'center',
       render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
@@ -71,10 +92,10 @@ const PostList = () => {
       align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_post)}>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_post)}>
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id)}>
             Xoá
           </Button>
         </>
@@ -86,15 +107,15 @@ const PostList = () => {
     navigate('/post/add');
   };
 
-  const handleEdit = (id_post) => {
-    navigate('/post/edit/' + id_post);
-    console.log('Edit post with id_post => ', id_post);
+  const handleEdit = (id) => {
+    navigate('/post/edit/' + id);
+    console.log('Edit post with id => ', id);
   };
 
-  const handleDelete = (id_post) => {
-    console.log('single delete with id_post => ', id_post);
+  const handleDelete = (id) => {
+    console.log('single delete with id => ', id);
     setShowModal(true);
-    setDeleteItem(id_post);
+    setDeleteItem(id);
     setDeleteType('single');
   };
 
@@ -107,7 +128,7 @@ const PostList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/posts/multiple?id_posts=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/posts/multiple?ids=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -175,7 +196,7 @@ const PostList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_post"
+        rowKey="id"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {

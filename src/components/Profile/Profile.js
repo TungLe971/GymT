@@ -11,6 +11,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const [profileData, setProfileData] = useState({});
   const [selectedFile, setSelectedFile] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(actions.controlLoading(true));
@@ -28,7 +29,7 @@ const Profile = () => {
 
   const handleChange = (info) => {
     if (info.fileList.length > 0) {
-      const file = info.fileList[0].originFileObj;
+      const file = info.fileList[info.fileList.length - 1].originFileObj;
       let reader = new FileReader();
       reader.onload = (e) => {
         setProfileData({
@@ -39,22 +40,24 @@ const Profile = () => {
         setSelectedFile(true);
       };
       reader.readAsDataURL(file);
+    } else {
+      setSelectedFile(false);
     }
   };
 
   const handleUpload = () => {
+    setLoading(true);
     let formData = new FormData();
     formData.append('avatar', profileData.file);
-    dispatch(actions.controlLoading(true));
     requestApi('/users/upload-avatar', 'POST', formData, 'json', 'multipart/form-data')
       .then((res) => {
         console.log('res => ', res);
-        dispatch(actions.controlLoading(false));
         message.success('Avatar tải lên thành công');
+        setLoading(false);
       })
       .catch((err) => {
         console.log('err => ', err);
-        dispatch(actions.controlLoading(false));
+        setLoading(false);
       });
   };
 
@@ -68,9 +71,15 @@ const Profile = () => {
       </div>
       <div className="profile-btn">
         <Upload name="image" onChange={handleChange} accept="image/*" showUploadList={false}>
-          <Button icon={<UploadOutlined />}>Chọn tệp</Button>
+          <Button icon={<UploadOutlined />} loading={loading}>
+            Chọn tệp
+          </Button>
         </Upload>
-        {selectedFile && <Button onClick={handleUpload}>Tải lên</Button>}
+        {selectedFile && (
+          <Button onClick={handleUpload} loading={loading} disabled={loading}>
+            Tải lên
+          </Button>
+        )}
       </div>
     </div>
   );
