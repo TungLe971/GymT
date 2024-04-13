@@ -18,10 +18,10 @@ const Dashboard = () => {
     const promisePost = requestApi('/posts', 'GET');
     const promiseMember = requestApi('/members', 'GET');
     const promiseStaff = requestApi('/staffs', 'GET');
-    // const promiseCard = requestApi('/cards', 'GET');
+    const promiseCard = requestApi('/cards', 'GET');
 
     dispatch(actions.controlLoading(true));
-    Promise.all([promiseUser, promisePost, promiseMember, promiseStaff])
+    Promise.all([promiseUser, promisePost, promiseMember, promiseStaff, promiseCard])
       .then((res) => {
         console.log('res =>', res);
         setDashboardData({
@@ -29,7 +29,7 @@ const Dashboard = () => {
           totalPost: res[1].data.total,
           totalMember: res[2].data.total,
           totalStaff: res[3].data.total,
-          // totalCard: res[4].data.total,
+          totalCard: res[4].data.total,
         });
         setLoading(false);
         dispatch(actions.controlLoading(false));

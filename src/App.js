@@ -13,13 +13,13 @@ import PostEdit from './components/Post/PostEdit';
 import PostAdd from './components/Post/PostAdd';
 import UserList from './components/user/UserList';
 import UserEdit from './components/user/UserEdit';
-import Home from './components/Outside/Home/Home';
-import Programs from './components/Outside/Programs/Programs';
-import Reasons from './components/Outside/Reasons/Reasons';
-import Plans from './components/Outside/Plans/Plan';
-import Testimonials from './components/Outside/Testimonials/Testimonials';
-import Join from './components/Outside/Join/Join';
-import Footer from './components/Outside/Footer/Footer';
+// import Home from './components/Outside/Home/Home';
+// import Programs from './components/Outside/Programs/Programs';
+// import Reasons from './components/Outside/Reasons/Reasons';
+// import Plans from './components/Outside/Plans/Plan';
+// import Testimonials from './components/Outside/Testimonials/Testimonials';
+// import Join from './components/Outside/Join/Join';
+// import Footer from './components/Outside/Footer/Footer';
 import MemberList from './components/Member/MemberList';
 import MemberAdd from './components/Member/MemberAdd';
 import MemberEdit from './components/Member/MemberEdit';
@@ -37,6 +37,12 @@ import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Profile from './components/Profile/Profile';
+import CardList from './components/Card/CardList';
+import CardAdd from './components/Card/CardAdd';
+import CardEdit from './components/Card/CardEdit';
+import NotificationList from './components/Notification/NotificationList';
+import NotificationAdd from './components/Notification/NotificationAdd';
+import NotificationEdit from './components/Notification/NotificationEdit';
 
 function App() {
   return (
@@ -69,6 +75,12 @@ function App() {
               <Route path="/food" element={<FoodList />} />
               <Route path="/food/add" element={<FoodAdd />} />
               <Route path="/food/edit/:id_food" element={<FoodEdit />} />
+              <Route path="/card" element={<CardList />} />
+              <Route path="/card/add" element={<CardAdd />} />
+              <Route path="/card/edit/:id_card" element={<CardEdit />} />
+              <Route path="/notification" element={<NotificationList />} />
+              <Route path="/notification/add" element={<NotificationAdd />} />
+              <Route path="/notification/edit/:id_n" element={<NotificationEdit />} />
             </Route>
           </Route>
           <Route element={<PublicRoutes />}>
@@ -77,7 +89,7 @@ function App() {
           <Route path="*" element={<PageNotFound />}></Route>
         </Route>
       </Routes>
-      <div className="App">
+      {/* <div className="App">
         <Home />
         <Programs />
         <Reasons />
@@ -85,7 +97,7 @@ function App() {
         <Testimonials />
         <Join />
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -11,6 +11,8 @@ import {
   HeartFilled,
   SlackCircleFilled,
   CrownFilled,
+  BellFilled,
+  FireFilled,
 } from '@ant-design/icons';
 import './Sidebar.css';
 
@@ -36,8 +38,8 @@ const Sidebar = () => {
       items: [
         { label: 'Member List', key: 'member' },
         { label: 'Schedule', key: 'schedule' },
-        { label: 'Health', key: '7' },
-        { label: 'Personal Trainer', key: '8' },
+        { label: 'Health', key: 'health' },
+        { label: 'Personal Trainer', key: 'pt' },
       ],
     },
     {
@@ -56,8 +58,15 @@ const Sidebar = () => {
       items: [
         { label: 'Staff List', key: 'staff' },
         { label: 'Calendar', key: '10' },
-        { label: 'Option 11', key: '11' },
-        { label: 'Option 12', key: '12' },
+      ],
+    },
+    {
+      label: 'Classroom',
+      key: 'classrooms',
+      icon: <FireFilled />,
+      items: [
+        { label: 'Classroom List', key: 'classroom' },
+        { label: 'Schedule', key: '100' },
       ],
     },
     {
@@ -103,6 +112,12 @@ const Sidebar = () => {
         { label: 'Staff', key: '565' },
         { label: 'Food', key: '4897' },
       ],
+    },
+    {
+      label: 'Notification',
+      key: 'Notification',
+      icon: <BellFilled />,
+      items: [{ label: 'Notification', key: 'notification' }],
     },
   ];
 

@@ -44,6 +44,7 @@ const PostEdit = () => {
 
         const detailPost = await requestApi(`/posts/${params.id}`, 'GET');
         console.log('detailPost => ', detailPost);
+
         const fields = ['title', 'summary', 'description', 'thumbnail', 'category', 'status'];
         fields.forEach((field) => {
           if (field === 'category') {
@@ -54,15 +55,20 @@ const PostEdit = () => {
         });
         setPostData({ ...detailPost.data, thumbnail: process.env.REACT_APP_API_URL + '/' + detailPost.data.thumbnail });
         dispatch(actions.controlLoading(false));
-        // setValue('description', res.data.description);
       };
-      // getDetailPost();
+
       renderData();
     } catch (error) {
       console.log('error =>', error);
       dispatch(actions.controlLoading(false));
     }
   }, [dispatch, params.id, setValue]);
+
+  const sanitizeHTML = (htmlString) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlString;
+    return tempDiv.textContent || tempDiv.innerText || '';
+  };
 
   const handleSubmitFormUpdate = async (data) => {
     console.log('data form = > ', data);
@@ -161,7 +167,7 @@ const PostEdit = () => {
                 onChange={(event, editor) => {
                   const data = editor.getData();
                   console.log({ event, editor, data });
-                  setValue('description', data);
+                  setValue('description', sanitizeHTML(data));
                   trigger('description');
                 }}
               />

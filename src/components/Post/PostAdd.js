@@ -41,6 +41,12 @@ const PostAdd = () => {
     }
   };
 
+  const sanitizeHTML = (htmlString) => {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = htmlString;
+    return tempDiv.textContent || tempDiv.innerText || '';
+  };
+
   const handleSubmitFormAdd = async (data) => {
     console.log('data form = > ', data);
     let formData = new FormData();
@@ -129,7 +135,7 @@ const PostAdd = () => {
                   data=""
                   onChange={(event, editor) => {
                     const data = editor.getData();
-                    form.setFieldsValue({ description: data });
+                    form.setFieldsValue({ description: sanitizeHTML(data) });
                   }}
                 />
               </Form.Item>

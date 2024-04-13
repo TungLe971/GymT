@@ -4,19 +4,19 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './StaffList.css';
+import './NotificationList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const StaffList = () => {
+const NotificationList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [staffs, setStaffs] = useState([]);
+  const [notifications, setNotifications] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   const [searchString, setSearchString] = useState('');
   const [selectedRows, setSelectedRows] = useState([]);
   const [deleteItem, setDeleteItem] = useState(null);
@@ -27,64 +27,36 @@ const StaffList = () => {
   const columns = [
     {
       title: 'ID',
-      dataIndex: 'id_nv',
-      key: 'id_nv',
+      dataIndex: 'id_n',
+      key: 'id_n',
       align: 'center',
     },
     {
-      title: 'Tên',
-      dataIndex: 'name_nv',
-      key: 'name_nv',
+      title: 'Tiêu đề',
+      dataIndex: 'title_n',
+      key: 'title_n',
       align: 'center',
     },
     {
-      title: 'Email',
-      dataIndex: 'email_nv',
-      key: 'email_nv',
       align: 'center',
+      title: 'Trạng thái',
+      dataIndex: 'status_n',
+      key: 'status_n',
+      render: (status_n) => <span>{status_n === 1 ? 'Active' : 'Inactive'} </span>,
     },
     {
-      title: 'Ngày sinh',
-      dataIndex: 'ngay_sinh_nv',
-      key: 'ngay_sinh_nv',
+      title: 'Ngày tạo',
+      dataIndex: 'ngay_tao_n',
+      key: 'ngay_tao_n',
       align: 'center',
-      // render: (text) => <span>{text ? new Date(text).toLocaleDateString() : ''}</span>,
+      render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
-      title: 'Giới tính',
-      dataIndex: 'gioi_tinh_nv',
-      key: 'gioi_tinh_nv',
+      title: 'Cập Nhật Cuối',
+      dataIndex: 'ngay_cap_nhap_n',
+      key: 'ngay_cap_nhap_n',
       align: 'center',
-    },
-    {
-      title: 'Tuổi',
-      dataIndex: 'tuoi_nv',
-      key: 'tuoi_nv',
-      align: 'center',
-    },
-    {
-      title: 'SĐT',
-      dataIndex: 'sdt_nv',
-      key: 'sdt_nv',
-      align: 'center',
-    },
-    {
-      title: 'TCCCD',
-      dataIndex: 'tcccd_nv',
-      key: 'tcccd_nv',
-      align: 'center',
-    },
-    {
-      title: 'Chức vụ',
-      dataIndex: 'chuc_vu',
-      key: 'chuc_vu',
-      align: 'center',
-    },
-    {
-      title: 'Địa chỉ',
-      dataIndex: 'dia_chi_nv',
-      key: 'dia_chi_nv',
-      align: 'center',
+      render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
     },
     {
       title: 'Actions',
@@ -92,10 +64,10 @@ const StaffList = () => {
       align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_nv)}>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_n)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_nv)}>
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_n)}>
             Xoá
           </Button>
         </>
@@ -104,18 +76,18 @@ const StaffList = () => {
   ];
 
   const onHandleAdd = () => {
-    navigate('/staff/add');
+    navigate('/notification/add');
   };
 
-  const handleEdit = (id_nv) => {
-    navigate('/staff/edit/' + id_nv);
-    console.log('Edit staff with id_nv => ', id_nv);
+  const handleEdit = (id_n) => {
+    navigate('/notification/edit/' + id_n);
+    console.log('Edit notification with id_n => ', id_n);
   };
 
-  const handleDelete = (id_nv) => {
-    console.log('single delete with id_nv => ', id_nv);
+  const handleDelete = (id_n) => {
+    console.log('single delete with id_n => ', id_n);
     setShowModal(true);
-    setDeleteItem(id_nv);
+    setDeleteItem(id_n);
     setDeleteType('single');
   };
 
@@ -128,7 +100,7 @@ const StaffList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/staffs/multiple?id_nvs=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/notifications/multiple?id_ns=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -145,10 +117,10 @@ const StaffList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/staffs${query}`, 'GET', [])
+    requestApi(`/notifications${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setStaffs(response.data.data);
+        setNotifications(response.data.data);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -175,7 +147,7 @@ const StaffList = () => {
           </Button>
         )}
         <Search
-          placeholder="Email or Name"
+          placeholder="Name"
           allowClear
           enterButton="Search"
           size="middle"
@@ -186,8 +158,8 @@ const StaffList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Staff'}
-        dataSource={staffs}
+        title={() => 'List Notification'}
+        dataSource={notifications}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -196,7 +168,7 @@ const StaffList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_nv"
+        rowKey="id_n"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -204,7 +176,6 @@ const StaffList = () => {
           },
         }}
       />
-
       <Modal
         title="Confirmation"
         open={showModal}
@@ -224,4 +195,4 @@ const StaffList = () => {
   );
 };
 
-export default StaffList;
+export default NotificationList;
