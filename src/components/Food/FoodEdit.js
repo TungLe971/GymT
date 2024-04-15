@@ -30,6 +30,7 @@ const FoodEdit = () => {
           'loai_food',
           'gia_nhap_food',
           'gia_ban_food',
+          'total_money_food',
           'note_food',
         ];
         fields.forEach((field) => setValue(field, res.data[field]));
@@ -42,7 +43,7 @@ const FoodEdit = () => {
     fetchFoodData();
   }, [dispatch, params.id_food, setValue]);
 
-  const handleSubmitFormUpdate = async (data) => {
+  async function handleSubmitFormUpdate(data) {
     dispatch(actions.controlLoading(true));
     try {
       const res = await requestApi(`/foods/${params.id_food}`, 'PUT', data);
@@ -54,27 +55,28 @@ const FoodEdit = () => {
       console.log('error=> ', error);
       dispatch(actions.controlLoading(false));
     }
-  };
+  }
 
   return (
-    <div className="bg-primary2">
-      <div className="container2">
-        <div className="card-header2">
-          <h3 className="text-henter2" style={{ color: 'white', fontSize: '2.5rem', marginBottom: '-4px' }}>
+    <div className="bg-primary-food-ed">
+      <div className="container-food-ed">
+        <div className="card-header-food-ed">
+          <h3 className="text-henter-food-ed" style={{ color: 'white', fontSize: '2.5rem', marginBottom: '-4px' }}>
             Update Food
           </h3>
         </div>
-        <div className="card-body2">
-          <div className="label-edit2">
+        <div className="card-body-food-ed">
+          <div className="label-edit-food-ed">
             <label>Name:</label>
             <label>Lượng nhập:</label>
             <label>Lượng còn:</label>
             <label>Loại:</label>
             <label>Giá nhập:</label>
             <label>Giá Bán:</label>
+            <label>Thành tiền:</label>
             <label>Ghi chú:</label>
           </div>
-          <div className="input-edit2">
+          <div className="input-edit-food-ed">
             <input
               {...register('name_food', { required: { value: true, message: 'Name is required' } })}
               placeholder="Enter your name"
@@ -85,13 +87,13 @@ const FoodEdit = () => {
               {...register('so_luong_nhap_food', {
                 required: { value: true, message: 'Quantity imported is required' },
               })}
-              type="num"
+              type="number"
             />
             {errors.so_luong_nhap_food && <p>{errors.so_luong_nhap_food.message}</p>}
 
             <input
               {...register('so_luong_con_food', { required: { value: true, message: 'Quantity is required' } })}
-              type="num"
+              type="number"
             />
             {errors.so_luong_con_food && <p>{errors.so_luong_con_food.message}</p>}
 
@@ -103,15 +105,17 @@ const FoodEdit = () => {
 
             <input
               {...register('gia_nhap_food', { required: { value: true, message: 'Price imported is required' } })}
-              type="num"
+              type="number"
             />
             {errors.gia_nhap_food && <p>{errors.gia_nhap_food.message}</p>}
 
             <input
               {...register('gia_ban_food', { required: { value: true, message: 'Price is required' } })}
-              type="num"
+              type="number"
             />
             {errors.gia_ban_food && <p>{errors.gia_ban_food.message}</p>}
+
+            <input {...register('total_money_food')} disabled />
 
             <textarea
               {...register('note_food')}
@@ -119,7 +123,7 @@ const FoodEdit = () => {
               style={{ minHeight: '8em', maxHeight: '15rem', width: '295px' }}
             />
 
-            <button className="btn-primary2" onClick={handleSubmit(handleSubmitFormUpdate)} type="submit">
+            <button className="btn-primary-food-ed" onClick={handleSubmit(handleSubmitFormUpdate)} type="submit">
               Submit
             </button>
           </div>

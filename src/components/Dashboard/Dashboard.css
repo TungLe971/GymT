@@ -30,6 +30,12 @@
   border-radius: 10px;
 }
 
-.ant-card-body {
-  margin-top: 2rem;
+.drawer-dash {
+  position: absolute;
+  justify-content: center;
+  right: 25rem;
+  top: 6rem;
+  border-radius: 10px;
+  height: 35rem !important;
+  width: 32rem !important;
 }

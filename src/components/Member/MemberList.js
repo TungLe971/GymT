@@ -4,7 +4,6 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './MemberList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;

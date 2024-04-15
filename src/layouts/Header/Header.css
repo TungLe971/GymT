@@ -14,10 +14,6 @@
   color: white;
 }
 
-.drawer {
-  overflow-y: auto;
-}
-
 .btn-noti {
   position: absolute;
   bottom: 1rem;
@@ -50,4 +46,8 @@
   display: flex;
   gap: 2rem;
   align-items: center;
+}
+
+:where(.css-dev-only-do-not-override-djtmh8).ant-drawer .ant-drawer-header {
+  background: #bae8ea;
 }

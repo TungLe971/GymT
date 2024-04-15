@@ -37,7 +37,6 @@ const Sidebar = () => {
       icon: <CrownFilled />,
       items: [
         { label: 'Member List', key: 'member' },
-        { label: 'Schedule', key: 'schedule' },
         { label: 'Health', key: 'health' },
         { label: 'Personal Trainer', key: 'pt' },
       ],
@@ -48,7 +47,7 @@ const Sidebar = () => {
       icon: <CreditCardFilled />,
       items: [
         { label: 'Card List', key: 'card' },
-        { label: 'Card status', key: '6c' },
+        { label: 'Card status', key: 'cardstt' },
       ],
     },
     {
@@ -57,7 +56,7 @@ const Sidebar = () => {
       icon: <QqCircleFilled />,
       items: [
         { label: 'Staff List', key: 'staff' },
-        { label: 'Calendar', key: '10' },
+        { label: 'Salary', key: 'salary' },
       ],
     },
     {
@@ -66,23 +65,20 @@ const Sidebar = () => {
       icon: <FireFilled />,
       items: [
         { label: 'Classroom List', key: 'classroom' },
-        { label: 'Schedule', key: '100' },
+        { label: 'Schedule', key: 'schedule' },
       ],
     },
     {
       label: 'Packages',
       key: 'packagess',
       icon: <TagFilled />,
-      items: [{ label: 'Packages', key: 'packages' }],
+      items: [{ label: 'Packages List', key: 'packages' }],
     },
     {
       label: 'Foods',
       key: 'foods',
       icon: <HeartFilled />,
-      items: [
-        { label: 'Food List', key: 'food' },
-        { label: 's', key: '41' },
-      ],
+      items: [{ label: 'Food List', key: 'food' }],
     },
     {
       label: 'Events',
@@ -90,17 +86,14 @@ const Sidebar = () => {
       icon: <StarFilled />,
       items: [
         { label: 'Event List', key: 'event' },
-        { label: 'Option 41', key: '484' },
+        { label: 'Gift', key: 'gift' },
       ],
     },
     {
       label: 'Equipments',
       key: 'equipments',
       icon: <SlackCircleFilled />,
-      items: [
-        { label: 'Equipments List', key: 'equipment' },
-        { label: 'Option 2', key: '28' },
-      ],
+      items: [{ label: 'Equipments List', key: 'equipment' }],
     },
     {
       label: 'Statisticals',
@@ -108,9 +101,9 @@ const Sidebar = () => {
       icon: <PieChartFilled />,
       items: [
         { label: 'Revenue', key: 'statistical' },
-        { label: 'Member', key: '4' },
-        { label: 'Staff', key: '565' },
-        { label: 'Food', key: '4897' },
+        { label: 'Member', key: 'statisticalmb' },
+        { label: 'Staff', key: 'statisticalst' },
+        { label: 'Food', key: 'statisticalf' },
       ],
     },
     {

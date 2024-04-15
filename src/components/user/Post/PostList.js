@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Modal, Typography, Table, Input } from 'antd';
-import requestApi from '../../helpers/api';
+import requestApi from '../../../helpers/api';
 import { useDispatch } from 'react-redux';
-import * as actions from '../../redux/actions';
+import * as actions from '../../../redux/actions';
 import { useNavigate } from 'react-router-dom';
 import './PostList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';

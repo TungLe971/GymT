@@ -17,11 +17,11 @@ const FoodAdd = () => {
     console.log('data form => ', data);
     dispatch(actions.controlLoading(true));
     try {
-      const res = await requestApi('foods', 'Post', data);
+      const res = await requestApi('/foods', 'Post', data);
       console.log('res=> ', res);
       dispatch(actions.controlLoading(false));
-      message.success('Thêm gói thành công!', 2);
-      setTimeout(() => navigate('food'), 1000);
+      message.success('Thêm food thành công!', 2);
+      setTimeout(() => navigate('/food'), 1000);
     } catch (error) {
       console.log('error=> ', error);
       dispatch(actions.controlLoading(false));
@@ -40,7 +40,6 @@ const FoodAdd = () => {
           <div className="label-add">
             <label>Name:</label>
             <label>Lượng nhập:</label>
-            <label>Lượng còn:</label>
             <label>Loại:</label>
             <label>Giá nhập:</label>
             <label>Giá Bán:</label>
@@ -57,10 +56,6 @@ const FoodAdd = () => {
                 rules={[{ required: true, message: 'Quantity imported is required' }]}
               >
                 <Input placeholder="Enter your Quantity imported" type="number" />
-              </Form.Item>
-
-              <Form.Item name="so_luong_con_food" rules={[{ required: true, message: 'Quantity is required' }]}>
-                <Input placeholder="Enter your Quantity" type="number" />
               </Form.Item>
 
               <Form.Item name="loai_food" rules={[{ required: true, message: 'Type is required' }]}>

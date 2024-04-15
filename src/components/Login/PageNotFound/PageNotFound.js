@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './PageNotFound.css';
-import pic404 from '../../pic/404.jpg';
+import pic404 from '../../../pic/404.jpg';
 
 const PageNotFound = () => {
   return (

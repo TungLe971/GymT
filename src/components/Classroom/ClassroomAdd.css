@@ -1,4 +1,4 @@
-.bg-primary-card {
+.bg-primary-clasroom {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.card-body-card {
+.card-body-clasroom {
   display: flex;
   justify-content: center;
   background-color: white;
@@ -15,7 +15,7 @@
   width: auto;
 }
 
-.label-add-card {
+.label-add-clasroom {
   display: flex;
   flex-direction: column;
   gap: 1.95rem;
@@ -23,16 +23,12 @@
   width: 12.5rem;
 }
 
-.card-body-card label {
+.card-body-clasroom label {
   color: rgb(231, 182, 133);
   font-size: 1.3rem;
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
-}
-
-.card-body-card input {
-  width: auto;
 }
 
 .btn-primary1 {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, Input, Button, Dropdown, Menu, Avatar, Drawer, FloatButton } from 'antd';
+import { Layout, Input, Button, Dropdown, Menu, Avatar, Drawer, FloatButton, Card } from 'antd';
 import { UserOutlined, SearchOutlined, LogoutOutlined, SettingOutlined, BellOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
@@ -111,18 +111,24 @@ const Header = () => {
           type="default"
           style={{ cursor: 'pointer', position: 'absolute', top: '6rem', right: '2rem' }}
         />
-        <Drawer className="drawer" title="Thông báo" onClose={onClose} open={open}>
+        <Drawer
+          className="drawer-header"
+          style={{ backgroundColor: '#dceff5' }}
+          title="Thông báo"
+          onClose={onClose}
+          open={open}
+        >
           {notifications.map((notification) => (
-            <div key={notification.id_n}>
-              <h3>{notification.title_n}</h3>
-              <p style={{ borderBottom: '1px solid #ccc' }}>{notification.noi_dung_n}</p>
-            </div>
+            <Card
+              title={notification.title_n}
+              style={{ marginTop: 5 }}
+              bordered={false}
+              size="small"
+              key={notification.id_n}
+            >
+              <p>{notification.noi_dung_n}</p>
+            </Card>
           ))}
-          <div className="btn-noti">
-            <Button onClick={() => navigate('/notifications')} type="primary">
-              Xem tất cả
-            </Button>
-          </div>
         </Drawer>
         <Dropdown trigger={['click']} overlay={menu} placement="bottomRight" arrow>
           <Avatar style={{ cursor: 'pointer' }} size="medium" icon={<UserOutlined />} className="ant-dropdown-link" />

@@ -16,11 +16,13 @@ const CardAdd = () => {
   const [members, setMembers] = useState([]);
   const [staffs, setStaffs] = useState([]);
   const [packagess, setPackages] = useState([]);
+  const [classrooms, setClassroom] = useState([]);
 
   useEffect(() => {
     fetchMembers();
     fetchStaffs();
     fetchPackages();
+    fetchClassroom();
   }, []);
 
   const fetchMembers = async () => {
@@ -62,6 +64,19 @@ const CardAdd = () => {
     }
   };
 
+  const fetchClassroom = async () => {
+    try {
+      const res = await requestApi('/classrooms', 'GET');
+      if (res.data.data !== null && Array.isArray(res.data.data)) {
+        setClassroom(res.data.data);
+      } else {
+        console.error('classroom data is not an array:', res.data.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch classroom:', error);
+    }
+  };
+
   const handleSubmitFormAdd = async (data) => {
     dispatch(actions.controlLoading(true));
     try {
@@ -89,6 +104,7 @@ const CardAdd = () => {
             <label>Hội viên:</label>
             <label>Nhân viên:</label>
             <label>Gói:</label>
+            <label>Lớp:</label>
             <label>Trạng thái:</label>
             <label>Thành tiền:</label>
             <label>Ngày bắt đầu:</label>
@@ -122,6 +138,16 @@ const CardAdd = () => {
                   {packagess.map((pkg) => (
                     <Option key={pkg.id_packages} value={pkg.id_packages}>
                       {`${pkg.name_packages}`}
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+
+              <Form.Item name="id_classroom" rules={[{ required: true, message: 'Please select a classroom' }]}>
+                <Select placeholder="Select a classroom" showSearch optionFilterProp="children">
+                  {classrooms.map((clr) => (
+                    <Option key={clr.id_classroom} value={clr.id_classroom}>
+                      {`${clr.name_classroom}`}
                     </Option>
                   ))}
                 </Select>

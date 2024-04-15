@@ -16,22 +16,35 @@ const CardEdit = () => {
   const [members, setMembers] = useState([]);
   const [staffs, setStaffs] = useState([]);
   const [packagess, setPackagess] = useState([]);
+  const [classrooms, setClassrooms] = useState([]);
 
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     try {
       const fetchData = async () => {
-        const [membersRes, staffsRes, packagessRes, detailCardRes] = await Promise.all([
+        const [membersRes, staffsRes, packagessRes, classroomsRes, detailCardRes] = await Promise.all([
           requestApi('/members', 'GET'),
           requestApi('/staffs', 'GET'),
           requestApi('/packagess', 'GET'),
+          requestApi('/classrooms', 'GET'),
           requestApi(`/cards/${params.id_card}`, 'GET'),
         ]);
 
-        setMembers(membersRes.data.data);
-        setStaffs(staffsRes.data.data);
-        setPackagess(packagessRes.data.data);
-        setCardData(detailCardRes.data.data);
+        const packagessData = packagessRes.data.data;
+        const classroomsData = classroomsRes.data.data;
+        const membersData = membersRes.data.data;
+        const staffsData = staffsRes.data.data;
+        const cardData = detailCardRes.data.data;
+        if (cardData && cardData.member) {
+          const memberId = cardData.member.id_hv;
+          setCardData({ ...cardData, memberId });
+        } else {
+          console.error('Card data is missing in card data:', cardData);
+        }
+        setPackagess(packagessData);
+        setClassrooms(classroomsData);
+        setMembers(membersData);
+        setStaffs(staffsData);
         dispatch(actions.controlLoading(false));
       };
 
@@ -69,9 +82,11 @@ const CardEdit = () => {
             <label>Hội viên:</label>
             <label>Nhân viên:</label>
             <label>Gói:</label>
+            <label>Lớp:</label>
             <label>Trạng thái:</label>
             <label>Ngày bắt đầu:</label>
             <label>Ngày kết thúc:</label>
+            <label>Thành tiền:</label>
           </div>
           <div className="input-edit-card-ed">
             <select {...register('memberId')} defaultValue={cardData.memberId}>
@@ -93,7 +108,15 @@ const CardEdit = () => {
             <select {...register('packageId')} defaultValue={cardData.packageId}>
               {packagess.map((pkg) => (
                 <option key={pkg.id_packages} value={pkg.id_packages}>
-                  {`${pkg.id_packages}, ${pkg.name_packages}`}
+                  {`${pkg.name_packages}`}
+                </option>
+              ))}
+            </select>
+
+            <select {...register('classroomId')} defaultValue={cardData.classroomId}>
+              {classrooms.map((clr) => (
+                <option key={clr.id_classroom} value={clr.id_classroom}>
+                  {`${clr.name_classroom}`}
                 </option>
               ))}
             </select>
@@ -120,6 +143,14 @@ const CardEdit = () => {
               inputReadOnly={false}
               placeholder="Select date"
             />
+
+            <select {...register('total_money_card')} defaultValue={cardData.total_money_card}>
+              {packagess.map((pkg) => (
+                <option key={pkg.id_packages} value={pkg.total_money_card}>
+                  {`${pkg.gia_packages}`}
+                </option>
+              ))}
+            </select>
 
             <button className="btn-primary-card-ed" onClick={handleSubmit(handleSubmitFormUpdate)} type="submit">
               Submit

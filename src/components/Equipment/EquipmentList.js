@@ -54,6 +54,7 @@ const EquipmentList = () => {
       dataIndex: 'gia_equipment',
       key: 'gia_equipment',
       align: 'center',
+      render: (text) => <span>{text}K</span>,
     },
     {
       title: 'Trạng thái',
@@ -67,18 +68,6 @@ const EquipmentList = () => {
       key: 'note_equipment',
       align: 'center',
     },
-    // {
-    //   title: 'Ngày tạo',
-    //   dataIndex: 'ngay_tao_equipment',
-    //   key: 'ngay_tao_equipment',
-    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
-    // },
-    // {
-    //   title: 'Cập Nhật Cuối',
-    //   dataIndex: 'ngay_cap_nhap_equipment',
-    //   key: 'ngay_cap_nhap_equipment',
-    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
-    // },
     {
       title: 'Actions',
       key: 'actions',

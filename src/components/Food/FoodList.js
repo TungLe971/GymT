@@ -38,12 +38,6 @@ const FoodList = () => {
       align: 'center',
     },
     {
-      title: 'Lượng Nhập',
-      dataIndex: 'so_luong_nhap_food',
-      key: 'so_luong_nhap_food',
-      align: 'center',
-    },
-    {
       title: 'Lượng Còn',
       dataIndex: 'so_luong_con_food',
       key: 'so_luong_con_food',
@@ -56,16 +50,18 @@ const FoodList = () => {
       align: 'center',
     },
     {
-      title: 'Giá Nhập',
-      dataIndex: 'gia_nhap_food',
-      key: 'gia_nhap_food',
-      align: 'center',
-    },
-    {
       title: 'Giá Bán',
       dataIndex: 'gia_ban_food',
       key: 'gia_ban_food',
       align: 'center',
+      render: (text) => <span>{text}K</span>,
+    },
+    {
+      title: 'Vốn lãi',
+      dataIndex: 'total_money_food',
+      key: 'total_money_food',
+      align: 'center',
+      render: (text) => <span>{text}K</span>,
     },
     {
       title: 'Ghi chú',
@@ -77,13 +73,16 @@ const FoodList = () => {
     //   title: 'Ngày tạo',
     //   dataIndex: 'ngay_tao_food',
     //   key: 'ngay_tao_food',
-    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
-    // },
-    // {
-    //   title: 'Cập Nhật Cuối',
-    //   dataIndex: 'ngay_cap_nhap_food',
-    //   key: 'ngay_cap_nhap_food',
-    //   render: (text) => <span>{text ? new Date(text).toLocaleString() : ''}</span>,
+    //   render: (text) => {
+    //   if (text) {
+    //     const startDate = new Date(text);
+    //     const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
+    //     const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
+    //     const year = startDate.getFullYear();
+    //     return `${day}/${month}/${year}`;
+    //   } else {
+    //     return '';
+    //   }
     // },
     {
       title: 'Actions',

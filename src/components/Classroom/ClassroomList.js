@@ -4,16 +4,15 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './PackagesList.css';
 import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const PackagesList = () => {
+const ClassroomList = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [packagess, setPackagess] = useState([]);
+  const [classrooms, setClassrooms] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
@@ -26,35 +25,91 @@ const PackagesList = () => {
 
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'id_packages',
-      key: 'id_packages',
+      title: 'ID lớp',
+      dataIndex: 'id_classroom',
+      key: 'id_classroom',
       align: 'center',
     },
     {
-      title: 'Tên gói',
-      dataIndex: 'name_packages',
-      key: 'name_packages',
+      title: 'Tên lớp',
+      dataIndex: 'name_classroom',
+      key: 'name_classroom',
       align: 'center',
     },
     {
-      title: 'Giá',
-      dataIndex: 'gia_packages',
-      key: 'gia_packages',
+      title: 'Nhân viên',
+      dataIndex: 'staff',
+      key: 'staff',
       align: 'center',
-      render: (text) => <span>{text}K</span>,
+      render: (staff) => <span>{staff ? staff.name_nv : ''}</span>,
     },
     {
-      title: 'Ghi chú',
-      dataIndex: 'note_packages',
-      key: 'note_packages',
+      title: 'Số lượng',
+      dataIndex: 'so_luong_classroom',
+      key: 'so_luong_classroom',
       align: 'center',
-      width: '300px',
     },
     {
-      title: 'Ngày tạo',
-      dataIndex: 'ngay_tao_packages',
-      key: 'ngay_tao_packages',
+      align: 'center',
+      title: 'Thời lượng',
+      dataIndex: 'thoi_luong_classroom',
+      key: 'thoi_luong_classroom',
+      render: (thoi_luong_classroom) => {
+        const renderValue = {
+          1: 'Ca 1',
+          2: 'Ca 2',
+          3: 'Ca 3',
+          4: 'Ca 4',
+          default: 'Ca 5',
+        };
+
+        return <span>{renderValue[thoi_luong_classroom] || renderValue.default}</span>;
+      },
+    },
+    {
+      align: 'center',
+      title: 'Ngày tập',
+      dataIndex: 'day_classroom',
+      key: 'day_classroom',
+      render: (day_classroom) => {
+        const renderValue = {
+          2: 'Thứ 2',
+          3: 'Thứ 3',
+          4: 'Thứ 4',
+          5: 'Thứ 5',
+          6: 'Thứ 6',
+          7: 'Thứ 7',
+          1: 'Chủ nhật',
+        };
+
+        if (Array.isArray(day_classroom)) {
+          return (
+            <span>
+              {day_classroom.map((day, index) => (
+                <span key={index}>
+                  {renderValue[day]}
+                  {index !== day_classroom.length - 1 && ', '}
+                </span>
+              ))}
+            </span>
+          );
+        } else {
+          return <span>{renderValue[day_classroom]}</span>;
+        }
+      },
+    },
+
+    {
+      align: 'center',
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status) => <span>{status === 1 ? 'Active' : 'Inactive'} </span>,
+    },
+    {
+      title: 'Ngày bắt đầu',
+      dataIndex: 'ngay_start',
+      key: 'ngay_start',
       align: 'center',
       render: (text) => {
         if (text) {
@@ -69,9 +124,9 @@ const PackagesList = () => {
       },
     },
     {
-      title: 'Cập Nhật Cuối',
-      dataIndex: 'ngay_cap_nhap_packages',
-      key: 'ngay_cap_nhap_packages',
+      title: 'Ngày kết thúc',
+      dataIndex: 'ngay_end',
+      key: 'ngay_end',
       align: 'center',
       render: (text) => {
         if (text) {
@@ -91,10 +146,10 @@ const PackagesList = () => {
       align: 'center',
       render: (_, row) => (
         <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_packages)}>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_classroom)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_packages)}>
+          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_classroom)}>
             Xoá
           </Button>
         </>
@@ -103,18 +158,18 @@ const PackagesList = () => {
   ];
 
   const onHandleAdd = () => {
-    navigate('/packages/add');
+    navigate('/classroom/add');
   };
 
-  const handleEdit = (id_packages) => {
-    navigate('/packages/edit/' + id_packages);
-    console.log('Edit packages with id_packages => ', id_packages);
+  const handleEdit = (id_classroom) => {
+    navigate('/classroom/edit/' + id_classroom);
+    console.log('Edit classroom with id_classroom => ', id_classroom);
   };
 
-  const handleDelete = (id_packages) => {
-    console.log('single delete with id_packages => ', id_packages);
+  const handleDelete = (id_classroom) => {
+    console.log('single delete with id_classroom => ', id_classroom);
     setShowModal(true);
-    setDeleteItem(id_packages);
+    setDeleteItem(id_classroom);
     setDeleteType('single');
   };
 
@@ -127,7 +182,7 @@ const PackagesList = () => {
   const requestDeleteApi = () => {
     let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/packagess/multiple?id_packagess=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/classrooms/multiple?id_classrooms=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -144,10 +199,10 @@ const PackagesList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/packagess${query}`, 'GET', [])
+    requestApi(`/classrooms${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setPackagess(response.data.data);
+        setClassrooms(response.data.data);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -185,8 +240,8 @@ const PackagesList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Packages'}
-        dataSource={packagess}
+        title={() => 'List Classroom'}
+        dataSource={classrooms}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -195,7 +250,7 @@ const PackagesList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_packages"
+        rowKey="id_classroom"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -222,4 +277,4 @@ const PackagesList = () => {
   );
 };
 
-export default PackagesList;
+export default ClassroomList;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import requestApi from '../../helpers/api';
-import * as actions from '../../redux/actions';
+import requestApi from '../../../helpers/api';
+import * as actions from '../../../redux/actions';
 import { useDispatch } from 'react-redux';
-import avatarimg from '../../pic/avatar.png';
+import avatarimg from '../../../pic/avatar.png';
 import './Profile.css';
 
 const Profile = () => {

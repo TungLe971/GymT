@@ -1,4 +1,4 @@
-.bg-primary-food-ed {
+.bg-primary-clasroom-ed {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,60 +7,61 @@
   margin-top: -1.5rem;
 }
 
-.card-body-food-ed {
+.card-body-clasroom-ed {
   display: flex;
   border-radius: 10px;
   padding: 20px;
   background-color: white;
-  width: 30rem;
+  width: 33rem;
 }
 
-.label-edit-food-ed {
+.label-edit-clasroom-ed {
   display: flex;
   flex-direction: column;
-  gap: 1.79rem;
+  gap: 1.8rem;
   margin-right: 20px;
   margin-top: 6px;
 }
 
-.input-edit-food-ed {
+.input-edit-clasroom-ed {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  width: 20rem;
+  width: 34rem;
 }
 
-.label-edit-food-ed label {
+.label-edit-clasroom-ed label {
   color: rgb(231, 182, 133);
   font-size: 1.3rem;
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
-  width: 10rem;
+  width: 12rem;
 }
 
-.input-edit-food-ed input {
-  width: 282px;
+.input-edit-clasroom-ed input {
+  width: 17rem;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
-.input-edit-food-ed select {
-  width: 300px;
+.input-edit-clasroom-ed select {
+  width: 18.1rem;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
-.input-edit-food-ed p {
+.input-edit-clasroom-ed p {
   width: 300px;
   margin-top: -1.3rem;
   margin-bottom: -1.1rem;
   color: red;
 }
 
-.btn-primary-food-ed {
+.btn-primary-clasroom-ed {
+  position: relative;
   width: 200px;
   padding: 0.5rem;
   background-color: #007bff;
@@ -68,8 +69,9 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: -50px;
 }
 
-.btn-primary-food-ed:hover {
+.btn-primary-clasroom-ed:hover {
   background-color: #0056b3;
 }
