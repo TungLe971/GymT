@@ -85,3 +85,7 @@
     transform: rotate(360deg);
   }
 }
+
+:where(.css-dev-only-do-not-override-usln0u).ant-table-wrapper .ant-table-pagination-right {
+  justify-content: center;
+}

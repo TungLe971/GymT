@@ -48,6 +48,7 @@ const FoodList = () => {
       dataIndex: 'loai_food',
       key: 'loai_food',
       align: 'center',
+      render: (loai_food) => <span>{loai_food === 1 ? 'Nước' : 'Thực phẩm'} </span>,
     },
     {
       title: 'Giá Bán',

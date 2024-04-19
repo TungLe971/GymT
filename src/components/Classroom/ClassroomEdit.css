@@ -1,4 +1,4 @@
-.bg-primary-clasroom-ed {
+.bg-primary-classroom-edit {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   margin-top: -1.5rem;
 }
 
-.card-body-clasroom-ed {
+.card-body-classroom-edit {
   display: flex;
   border-radius: 10px;
   padding: 20px;
@@ -15,52 +15,51 @@
   width: 33rem;
 }
 
-.label-edit-clasroom-ed {
+.label-edit-classroom-edit {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.9rem;
   margin-right: 20px;
   margin-top: 6px;
 }
 
-.input-edit-clasroom-ed {
+.input-edit-classroom-edit {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   width: 34rem;
 }
 
-.label-edit-clasroom-ed label {
+.label-edit-classroom-edit label {
   color: rgb(231, 182, 133);
-  font-size: 1.3rem;
+  font-size: 1.37rem;
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
   width: 12rem;
 }
 
-.input-edit-clasroom-ed input {
+.input-edit-classroom-edit input {
   width: 17rem;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
-.input-edit-clasroom-ed select {
-  width: 18.1rem;
+.input-edit-classroom-edit select {
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 5px;
 }
 
-.input-edit-clasroom-ed p {
+.input-edit-classroom-edit p {
   width: 300px;
   margin-top: -1.3rem;
   margin-bottom: -1.1rem;
   color: red;
 }
 
-.btn-primary-clasroom-ed {
+.btn-primary-classroom-edit {
   position: relative;
   width: 200px;
   padding: 0.5rem;
@@ -72,6 +71,6 @@
   margin-left: -50px;
 }
 
-.btn-primary-clasroom-ed:hover {
+.btn-primary-classroom-edit:hover {
   background-color: #0056b3;
 }

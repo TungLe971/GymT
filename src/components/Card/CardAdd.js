@@ -113,7 +113,7 @@ const CardAdd = () => {
 
           <div className="input-add-card">
             <Form form={form} onFinish={handleSubmitFormAdd} layout="vertical">
-              <Form.Item name="id_member" rules={[{ required: true, message: 'Please select a member' }]}>
+              <Form.Item name="member" rules={[{ required: true, message: 'Please select a member' }]}>
                 <Select placeholder="Select a member" showSearch optionFilterProp="children">
                   {members.map((hv) => (
                     <Option key={hv.id_hv} value={hv.id_hv}>
@@ -123,7 +123,7 @@ const CardAdd = () => {
                 </Select>
               </Form.Item>
 
-              <Form.Item name="id_staff" rules={[{ required: true, message: 'Please select a staff' }]}>
+              <Form.Item name="staff" rules={[{ required: true, message: 'Please select a staff' }]}>
                 <Select placeholder="Select a staff" showSearch optionFilterProp="children">
                   {staffs.map((nv) => (
                     <Option key={nv.id_nv} value={nv.id_nv}>
@@ -133,7 +133,7 @@ const CardAdd = () => {
                 </Select>
               </Form.Item>
 
-              <Form.Item name="id_packages" rules={[{ required: true, message: 'Please select a package' }]}>
+              <Form.Item name="packages" rules={[{ required: true, message: 'Please select a package' }]}>
                 <Select placeholder="Select a package" showSearch optionFilterProp="children">
                   {packagess.map((pkg) => (
                     <Option key={pkg.id_packages} value={pkg.id_packages}>
@@ -143,7 +143,7 @@ const CardAdd = () => {
                 </Select>
               </Form.Item>
 
-              <Form.Item name="id_classroom" rules={[{ required: true, message: 'Please select a classroom' }]}>
+              <Form.Item name="classroom" rules={[{ required: true, message: 'Please select a classroom' }]}>
                 <Select placeholder="Select a classroom" showSearch optionFilterProp="children">
                   {classrooms.map((clr) => (
                     <Option key={clr.id_classroom} value={clr.id_classroom}>

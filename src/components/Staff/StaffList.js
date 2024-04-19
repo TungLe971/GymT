@@ -48,7 +48,17 @@ const StaffList = () => {
       dataIndex: 'ngay_sinh_nv',
       key: 'ngay_sinh_nv',
       align: 'center',
-      // render: (text) => <span>{text ? new Date(text).toLocaleDateString() : ''}</span>,
+      render: (text) => {
+        if (text) {
+          const startDate = new Date(text);
+          const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
+          const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
+          const year = startDate.getFullYear();
+          return `${day}/${month}/${year}`;
+        } else {
+          return '';
+        }
+      },
     },
     {
       title: 'Giới tính',

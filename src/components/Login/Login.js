@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-use-before-define */
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import requestApi from '../../helpers/api';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
@@ -25,7 +27,7 @@ function Login() {
     if (isSubmitted) {
       validateForm();
     }
-  }, [loginData]);
+  }, [isSubmitted, loginData]);
 
   const validateForm = () => {
     let isValid = true;
@@ -116,20 +118,18 @@ function Login() {
                 {formErrors.password && <p style={{ color: 'red' }}>{formErrors.password}</p>}
               </div>
               <div className="lg-box">
-                <a className="small-lg" href="password.html">
+                {/* <a className="small-lg" href="password.html">
                   Forgot Password?
-                </a>
+                </a> */}
+                <div className="small-back">
+                  <Link to="/home">Go back home!</Link>
+                </div>
                 <button className="btn btn-primary-lg" type="button" onClick={onSubmit}>
                   Login
                 </button>
               </div>
             </form>
           </div>
-          {/* <div className="card-footer text-center py-3">
-              <div className="small">
-                <Link to="/register">Need an account? Sign up!</Link>
-              </div>
-            </div> */}
         </main>
       </div>
     </div>

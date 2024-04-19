@@ -60,8 +60,8 @@ const FoodAdd = () => {
 
               <Form.Item name="loai_food" rules={[{ required: true, message: 'Type is required' }]}>
                 <Select style={{ width: '17rem' }} placeholder="Select Type">
-                  <Option value="Nước">Nước</Option>
-                  <Option value="Thực phẩm">Thực phẩm</Option>
+                  <Option value="1">Nước</Option>
+                  <Option value="0">Thực phẩm</Option>
                 </Select>
               </Form.Item>
 

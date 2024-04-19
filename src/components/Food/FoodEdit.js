@@ -98,8 +98,8 @@ const FoodEdit = () => {
             {errors.so_luong_con_food && <p>{errors.so_luong_con_food.message}</p>}
 
             <select {...register('loai_food', { required: { value: true, message: 'Type is required' } })}>
-              <option value="Nước">Nước</option>
-              <option value="Thực phẩm">Thực phẩm</option>
+              <option value="1">Nước</option>
+              <option value="0">Thực phẩm</option>
             </select>
             {errors.loai_food && <p>{errors.loai_food.message}</p>}
 

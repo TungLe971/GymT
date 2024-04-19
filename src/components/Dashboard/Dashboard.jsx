@@ -146,7 +146,7 @@ const Dashboard = () => {
                   loading={loading}
                   hoverable
                   style={{ width: 240, height: 170, background: 'rgb(187, 0, 87)' }}
-                  title="Total Warring"
+                  title="Card Warring"
                   extra={<Badge count={dashboardData.totalWarring} />}
                 >
                   <Meta style={{ marginTop: '2rem' }} title={<Link to="/user">View Details</Link>} />

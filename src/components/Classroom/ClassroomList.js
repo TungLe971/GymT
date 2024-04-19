@@ -106,40 +106,40 @@ const ClassroomList = () => {
       key: 'status',
       render: (status) => <span>{status === 1 ? 'Active' : 'Inactive'} </span>,
     },
-    {
-      title: 'Ngày bắt đầu',
-      dataIndex: 'ngay_start',
-      key: 'ngay_start',
-      align: 'center',
-      render: (text) => {
-        if (text) {
-          const startDate = new Date(text);
-          const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
-          const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
-          const year = startDate.getFullYear();
-          return `${day}/${month}/${year}`;
-        } else {
-          return '';
-        }
-      },
-    },
-    {
-      title: 'Ngày kết thúc',
-      dataIndex: 'ngay_end',
-      key: 'ngay_end',
-      align: 'center',
-      render: (text) => {
-        if (text) {
-          const startDate = new Date(text);
-          const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
-          const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
-          const year = startDate.getFullYear();
-          return `${day}/${month}/${year}`;
-        } else {
-          return '';
-        }
-      },
-    },
+    // {
+    //   title: 'Ngày bắt đầu',
+    //   dataIndex: 'ngay_start',
+    //   key: 'ngay_start',
+    //   align: 'center',
+    //   render: (text) => {
+    //     if (text) {
+    //       const startDate = new Date(text);
+    //       const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
+    //       const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
+    //       const year = startDate.getFullYear();
+    //       return `${day}/${month}/${year}`;
+    //     } else {
+    //       return '';
+    //     }
+    //   },
+    // },
+    // {
+    //   title: 'Ngày kết thúc',
+    //   dataIndex: 'ngay_end',
+    //   key: 'ngay_end',
+    //   align: 'center',
+    //   render: (text) => {
+    //     if (text) {
+    //       const startDate = new Date(text);
+    //       const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
+    //       const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
+    //       const year = startDate.getFullYear();
+    //       return `${day}/${month}/${year}`;
+    //     } else {
+    //       return '';
+    //     }
+    //   },
+    // },
     {
       title: 'Actions',
       key: 'actions',

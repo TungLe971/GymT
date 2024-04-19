@@ -101,9 +101,9 @@ const Sidebar = () => {
       icon: <PieChartFilled />,
       items: [
         { label: 'Revenue', key: 'statistical' },
-        { label: 'Member', key: 'statisticalmb' },
-        { label: 'Staff', key: 'statisticalst' },
-        { label: 'Food', key: 'statisticalf' },
+        { label: 'Member', key: 'statisticalmember' },
+        { label: 'Staff', key: 'statisticalstaff' },
+        { label: 'Food', key: 'statisticalfood' },
       ],
     },
     {

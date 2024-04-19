@@ -112,7 +112,7 @@ const StaffAdd = () => {
               </Form.Item>
 
               <Form.Item className="it_end1">
-                <Button className="btn-primary1" type="primary" htmlType="submit">
+                <Button className="btn-primary12" type="primary" htmlType="submit">
                   Submit
                 </Button>
               </Form.Item>

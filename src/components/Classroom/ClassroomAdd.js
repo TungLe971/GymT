@@ -36,7 +36,7 @@ const ClassroomAdd = () => {
     dispatch(actions.controlLoading(true));
     try {
       const res = await requestApi('/classrooms', 'POST', data);
-      console.log('res=> ', res);
+      console.log('classroom => ', res);
       message.success('Thêm thành công!', 2);
       setTimeout(() => navigate('/classroom'), 1000);
     } catch (error) {
@@ -71,7 +71,7 @@ const ClassroomAdd = () => {
                 <Input placeholder="Enter your Name" />
               </Form.Item>
 
-              <Form.Item name="id_staff" rules={[{ required: true, message: 'Please select a staff' }]}>
+              <Form.Item name="staff">
                 <Select placeholder="Select a staff" showSearch optionFilterProp="children">
                   {staffs.map((nv) => (
                     <Option key={nv.id_nv} value={nv.id_nv}>
@@ -116,6 +116,7 @@ const ClassroomAdd = () => {
                   allowClear={false}
                   inputReadOnly={false}
                   placeholder="Select date"
+                  format="YYYY-MM-DD"
                 />
               </Form.Item>
 
@@ -125,6 +126,7 @@ const ClassroomAdd = () => {
                   allowClear={false}
                   inputReadOnly={false}
                   placeholder="Select date"
+                  format="YYYY-MM-DD"
                 />
               </Form.Item>
 

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-dupe-keys */
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -18,6 +19,8 @@ const MemberEdit = () => {
     handleSubmit,
   } = useForm();
 
+  const [ngaySinh, setNgaySinh] = useState('');
+
   useEffect(() => {
     const fetchMemberData = async () => {
       dispatch(actions.controlLoading(true));
@@ -34,7 +37,13 @@ const MemberEdit = () => {
           'diem_tich_luy',
           'email_hv',
         ];
-        fields.forEach((field) => setValue(field, res.data[field]));
+        fields.forEach((field) => {
+          if (field === 'ngay_sinh_hv') {
+            setNgaySinh(formatDate(res.data[field]));
+          } else {
+            setValue(field, res.data[field]);
+          }
+        });
         dispatch(actions.controlLoading(false));
       } catch (error) {
         console.log('error =>', error);
@@ -44,10 +53,25 @@ const MemberEdit = () => {
     fetchMemberData();
   }, [dispatch, params.id_hv, setValue]);
 
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    month = month < 10 ? `0${month}` : month;
+    let day = date.getDate();
+    day = day < 10 ? `0${day}` : day;
+    return `${year}-${month}-${day}`;
+  };
+
   const handleSubmitFormUpdate = async (data) => {
     dispatch(actions.controlLoading(true));
     try {
-      const res = await requestApi(`/members/${params.id_hv}`, 'PUT', data);
+      const formattedData = {
+        ...data,
+        ngay_sinh_hv: formatDate(data.ngay_sinh_hv),
+        ngay_sinh_hv: ngaySinh,
+      };
+      const res = await requestApi(`/members/${params.id_hv}`, 'PUT', data, formattedData);
       console.log('res =>', res);
       dispatch(actions.controlLoading(false));
       message.success('Cập nhật thành viên thành công!', 2);
@@ -85,10 +109,7 @@ const MemberEdit = () => {
             />
             {errors.name_hv && <p>{errors.name_hv.message}</p>}
 
-            <input
-              {...register('ngay_sinh_hv', { required: { value: true, message: 'Born is required' } })}
-              type="date"
-            />
+            <input value={ngaySinh} onChange={(e) => setNgaySinh(e.target.value)} type="date" />
             {errors.ngay_sinh_hv && <p>{errors.ngay_sinh_hv.message}</p>}
 
             <select {...register('gioi_tinh_hv', { required: { value: true, message: 'Sex is required' } })}>

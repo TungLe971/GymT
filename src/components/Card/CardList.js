@@ -43,16 +43,14 @@ const CardList = () => {
       dataIndex: 'staff',
       key: 'staff',
       align: 'center',
-      render: (staff) => <span>{staff ? staff.map((staffItem) => staffItem.name_nv).join(', ') : ''}</span>,
+      render: (staff) => <span>{staff ? staff.name_nv : ''}</span>,
     },
     {
       title: 'Gói',
       dataIndex: 'packages',
       key: 'packages',
       align: 'center',
-      render: (packages) => (
-        <span>{packages ? packages.map((packageItem) => packageItem.name_packages).join(', ') : ''}</span>
-      ),
+      render: (packages) => <span>{packages ? packages.name_packages : ''}</span>,
     },
     {
       align: 'center',

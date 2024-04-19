@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable no-dupe-keys */
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -18,6 +19,8 @@ const StaffEdit = () => {
     handleSubmit,
   } = useForm();
 
+  const [ngaySinh, setNgaySinh] = useState('');
+
   useEffect(() => {
     const fetchStaffData = async () => {
       dispatch(actions.controlLoading(true));
@@ -35,7 +38,13 @@ const StaffEdit = () => {
           'email_nv',
           'dia_chi_nv',
         ];
-        fields.forEach((field) => setValue(field, res.data[field]));
+        fields.forEach((field) => {
+          if (field === 'ngay_sinh_nv') {
+            setNgaySinh(formatDate(res.data[field]));
+          } else {
+            setValue(field, res.data[field]);
+          }
+        });
         dispatch(actions.controlLoading(false));
       } catch (error) {
         console.log('error =>', error);
@@ -45,10 +54,25 @@ const StaffEdit = () => {
     fetchStaffData();
   }, [dispatch, params.id_nv, setValue]);
 
+  const formatDate = (isoDate) => {
+    const date = new Date(isoDate);
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    month = month < 10 ? `0${month}` : month;
+    let day = date.getDate();
+    day = day < 10 ? `0${day}` : day;
+    return `${year}-${month}-${day}`;
+  };
+
   const handleSubmitFormUpdate = async (data) => {
     dispatch(actions.controlLoading(true));
     try {
-      const res = await requestApi(`/staffs/${params.id_nv}`, 'PUT', data);
+      const formattedData = {
+        ...data,
+        ngay_sinh_nv: formatDate(data.ngay_sinh_nv),
+        ngay_sinh_nv: ngaySinh,
+      };
+      const res = await requestApi(`/staffs/${params.id_nv}`, 'PUT', formattedData);
       console.log('res =>', res);
       dispatch(actions.controlLoading(false));
       message.success('Cập nhật thành viên thành công!', 2);
@@ -87,10 +111,7 @@ const StaffEdit = () => {
             />
             {errors.name_nv && <p>{errors.name_nv.message}</p>}
 
-            <input
-              {...register('ngay_sinh_nv', { required: { value: true, message: 'Born is required' } })}
-              type="date"
-            />
+            <input value={ngaySinh} onChange={(e) => setNgaySinh(e.target.value)} type="date" />
             {errors.ngay_sinh_nv && <p>{errors.ngay_sinh_nv.message}</p>}
 
             <select {...register('gioi_tinh_nv', { required: { value: true, message: 'Sex is required' } })}>

@@ -11,8 +11,6 @@ import Layout from './layouts/Layout';
 // import PostList from './components/user/Post/PostList';
 // import PostEdit from './components/user/Post/PostEdit';
 // import PostAdd from './components/user/Post/PostAdd';
-import UserList from './components/user/UserList';
-import UserEdit from './components/user/UserEdit';
 // import Home from './components/Outside/Home/Home';
 // import Programs from './components/Outside/Programs/Programs';
 // import Reasons from './components/Outside/Reasons/Reasons';
@@ -20,6 +18,8 @@ import UserEdit from './components/user/UserEdit';
 // import Testimonials from './components/Outside/Testimonials/Testimonials';
 // import Join from './components/Outside/Join/Join';
 // import Footer from './components/Outside/Footer/Footer';
+import UserList from './components/user/UserList';
+import UserEdit from './components/user/UserEdit';
 import MemberList from './components/Member/MemberList';
 import MemberAdd from './components/Member/MemberAdd';
 import MemberEdit from './components/Member/MemberEdit';
@@ -49,6 +49,8 @@ import ClassroomEdit from './components/Classroom/ClassroomEdit';
 import Schedule from './components/Classroom/Schedule/Schedule';
 import HealthEdit from './components/Member/Healthy/HealthEdit';
 import HealthList from './components/Member/Healthy/Health';
+import Statisticalfood from './components/Statistical/Statisticalfood';
+import Statistical from './components/Statistical/Statistical';
 
 function App() {
   return (
@@ -93,23 +95,30 @@ function App() {
               <Route path="/classroom/add" element={<ClassroomAdd />} />
               <Route path="/classroom/edit/:id_classroom" element={<ClassroomEdit />} />
               <Route path="/schedule" element={<Schedule />} />
+              <Route path="/statistical" element={<Statistical />} />
+              <Route path="/statisticalfood" element={<Statisticalfood />} />
             </Route>
           </Route>
           <Route element={<PublicRoutes />}>
             <Route path="/login" element={<Login />} />
           </Route>
+          {/* <Route
+            path="/home"
+            element={
+              <div className="App">
+                <Home />
+                <Programs />
+                <Reasons />
+                <Plans />
+                <Testimonials />
+                <Join />
+                <Footer />
+              </div>
+            }
+          /> */}
           <Route path="*" element={<PageNotFound />}></Route>
         </Route>
       </Routes>
-      {/* <div className="App">
-        <Home />
-        <Programs />
-        <Reasons />
-        <Plans />
-        <Testimonials />
-        <Join />
-        <Footer />
-      </div> */}
     </div>
   );
 }
