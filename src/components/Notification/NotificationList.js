@@ -67,7 +67,12 @@ const NotificationList = () => {
           <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_n)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_n)}>
+          <Button
+            type="danger"
+            style={{ color: 'red' }}
+            icon={<DeleteOutlined />}
+            onClick={() => handleDelete(row.id_n)}
+          >
             Xoá
           </Button>
         </>

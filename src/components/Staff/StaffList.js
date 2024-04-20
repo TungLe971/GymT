@@ -105,7 +105,12 @@ const StaffList = () => {
           <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_nv)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_nv)}>
+          <Button
+            type="danger"
+            style={{ color: 'red' }}
+            icon={<DeleteOutlined />}
+            onClick={() => handleDelete(row.id_nv)}
+          >
             Xoá
           </Button>
         </>

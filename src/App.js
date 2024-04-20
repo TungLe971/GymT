@@ -39,7 +39,6 @@ import PageNotFound from './components/Login/PageNotFound/PageNotFound';
 import Profile from './components/user/Profile/Profile';
 import CardList from './components/Card/CardList';
 import CardAdd from './components/Card/CardAdd';
-import CardEdit from './components/Card/CardEdit';
 import NotificationList from './components/Notification/NotificationList';
 import NotificationAdd from './components/Notification/NotificationAdd';
 import NotificationEdit from './components/Notification/NotificationEdit';
@@ -87,7 +86,6 @@ function App() {
               <Route path="/food/edit/:id_food" element={<FoodEdit />} />
               <Route path="/card" element={<CardList />} />
               <Route path="/card/add" element={<CardAdd />} />
-              <Route path="/card/edit/:id_card" element={<CardEdit />} />
               <Route path="/notification" element={<NotificationList />} />
               <Route path="/notification/add" element={<NotificationAdd />} />
               <Route path="/notification/edit/:id_n" element={<NotificationEdit />} />

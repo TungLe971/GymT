@@ -163,7 +163,7 @@ const CardAdd = () => {
               <Form.Item name="total_money_card" rules={[{ required: true, message: 'Please select a package' }]}>
                 <Select placeholder="Select a package" showSearch optionFilterProp="children">
                   {packagess.map((pkg) => (
-                    <Option key={pkg.total_money_card} value={pkg.gia_packages}>
+                    <Option key={pkg.id_packages} value={pkg.gia_packages}>
                       {`${pkg.name_packages} - ${pkg.gia_packages}`}
                     </Option>
                   ))}

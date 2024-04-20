@@ -94,7 +94,12 @@ const PackagesList = () => {
           <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_packages)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_packages)}>
+          <Button
+            type="danger"
+            style={{ color: 'red' }}
+            icon={<DeleteOutlined />}
+            onClick={() => handleDelete(row.id_packages)}
+          >
             Xoá
           </Button>
         </>

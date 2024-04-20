@@ -79,7 +79,7 @@ const UserList = () => {
           <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id)}>
             Edit
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id)}>
+          <Button type="danger" style={{ color: 'red' }} icon={<DeleteOutlined />} onClick={() => handleDelete(row.id)}>
             Delete
           </Button>
         </>

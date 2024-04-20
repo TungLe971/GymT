@@ -77,7 +77,12 @@ const EquipmentList = () => {
           <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_equipment)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_equipment)}>
+          <Button
+            type="danger"
+            style={{ color: 'red' }}
+            icon={<DeleteOutlined />}
+            onClick={() => handleDelete(row.id_equipment)}
+          >
             Xoá
           </Button>
         </>

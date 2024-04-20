@@ -94,7 +94,12 @@ const FoodList = () => {
           <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_food)}>
             Sửa
           </Button>
-          <Button type="danger" icon={<DeleteOutlined />} onClick={() => handleDelete(row.id_food)}>
+          <Button
+            type="danger"
+            style={{ color: 'red' }}
+            icon={<DeleteOutlined />}
+            onClick={() => handleDelete(row.id_food)}
+          >
             Xoá
           </Button>
         </>
