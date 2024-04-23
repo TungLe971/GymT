@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1890ff;
+  background-color: #348ee2fa;
   padding: 0 20px;
 }
 
@@ -23,8 +23,12 @@
 }
 
 .btn-rgt {
-  background-color: #07252e91;
+  background-color: #2a6caa;
   color: white;
+}
+
+.btn-rgt:hover {
+  background-color: #eeefef !important;
 }
 
 .search-input .ant-input-group-addon {

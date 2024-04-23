@@ -4,123 +4,93 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-// import './foodList.css';
-import { EditOutlined, DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import moment from 'moment';
 
 const { Text } = Typography;
 const { Search } = Input;
 
-const FoodList = () => {
+const CardWarring = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [foods, setFoods] = useState([]);
+  const [cards, setCards] = useState([]);
   const [numOfPage, setNumOfPage] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [searchString, setSearchString] = useState('');
   const [selectedRows, setSelectedRows] = useState([]);
-  const [deleteItem, setDeleteItem] = useState(null);
-  const [deleteType, setDeleteType] = useState('single');
+  const [deleteType, setDeleteType] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [refresh, setRefresh] = useState(Date.now());
+  const currentDate = moment();
 
   const columns = [
     {
-      title: 'ID',
-      dataIndex: 'id_food',
-      key: 'id_food',
+      title: 'ID Thẻ',
+      dataIndex: 'id_card',
+      key: 'id_card',
       align: 'center',
     },
     {
-      title: 'Tên',
-      dataIndex: 'name_food',
-      key: 'name_food',
+      title: 'Hội viên',
+      dataIndex: 'member',
+      key: 'member',
       align: 'center',
+      render: (member) => <span>{member ? member.name_hv : ''}</span>,
     },
     {
-      title: 'Lượng Còn',
-      dataIndex: 'so_luong_con_food',
-      key: 'so_luong_con_food',
+      title: 'Gmail hội viên',
+      dataIndex: 'member',
+      key: 'member',
       align: 'center',
+      render: (member) => <span>{member ? member.email_hv : ''}</span>,
     },
     {
-      title: 'Loại',
-      dataIndex: 'loai_food',
-      key: 'loai_food',
+      title: 'SĐT hội viên',
+      dataIndex: 'member',
+      key: 'member',
       align: 'center',
-      render: (loai_food) => <span>{loai_food === 1 ? 'Nước' : 'Thực phẩm'} </span>,
+      render: (member) => <span>{member ? member.sdt_hv : ''}</span>,
     },
     {
-      title: 'Giá Bán',
-      dataIndex: 'gia_ban_food',
-      key: 'gia_ban_food',
       align: 'center',
-      render: (text) => <span>{text}K</span>,
+      title: 'Trạng thái',
+      dataIndex: 'status',
+      key: 'status',
+      render: (status) => <span>{status === 1 ? 'Active' : 'Inactive'} </span>,
     },
     {
-      title: 'Vốn lãi',
-      dataIndex: 'total_money_food',
-      key: 'total_money_food',
+      title: 'Ngày bắt đầu',
+      dataIndex: 'ngay_start',
+      key: 'ngay_start',
       align: 'center',
-      render: (text) => <span>{text}K</span>,
+      render: (text) => {
+        if (text) {
+          const startDate = moment(text);
+          return startDate.format('DD/MM/YYYY');
+        } else {
+          return '';
+        }
+      },
     },
     {
-      title: 'Ghi chú',
-      dataIndex: 'note_food',
-      key: 'note_food',
+      title: 'Ngày kết thúc',
+      dataIndex: 'ngay_end',
+      key: 'ngay_end',
       align: 'center',
-    },
-    // {
-    //   title: 'Ngày tạo',
-    //   dataIndex: 'ngay_tao_food',
-    //   key: 'ngay_tao_food',
-    //   render: (text) => {
-    //   if (text) {
-    //     const startDate = new Date(text);
-    //     const day = startDate.getDate() < 10 ? `0${startDate.getDate()}` : startDate.getDate();
-    //     const month = startDate.getMonth() + 1 < 10 ? `0${startDate.getMonth() + 1}` : startDate.getMonth() + 1;
-    //     const year = startDate.getFullYear();
-    //     return `${day}/${month}/${year}`;
-    //   } else {
-    //     return '';
-    //   }
-    // },
-    {
-      title: 'Actions',
-      key: 'actions',
-      align: 'center',
-      render: (_, row) => (
-        <>
-          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_food)}>
-            Sửa
-          </Button>
-          <Button
-            type="danger"
-            style={{ color: 'red' }}
-            icon={<DeleteOutlined />}
-            onClick={() => handleDelete(row.id_food)}
-          >
-            Xoá
-          </Button>
-        </>
-      ),
+      render: (text) => {
+        if (text) {
+          const endDate = moment(text);
+          return endDate.format('DD/MM/YYYY');
+        } else {
+          return '';
+        }
+      },
     },
   ];
 
   const onHandleAdd = () => {
-    navigate('/food/add');
-  };
-
-  const handleEdit = (id_food) => {
-    navigate('/food/edit/' + id_food);
-    console.log('Edit food with id_food => ', id_food);
-  };
-
-  const handleDelete = (id_food) => {
-    console.log('single delete with id_food => ', id_food);
-    setShowModal(true);
-    setDeleteItem(id_food);
-    setDeleteType('single');
+    navigate('/card/add');
   };
 
   const handleMultiDelete = () => {
@@ -130,9 +100,9 @@ const FoodList = () => {
   };
 
   const requestDeleteApi = () => {
-    let idsToDelete = deleteType === 'single' ? [deleteItem] : selectedRows;
+    let idsToDelete = deleteType === selectedRows;
     dispatch(actions.controlLoading(true));
-    requestApi(`/foods/multiple?id_foods=${idsToDelete.toString()}`, 'DELETE', [])
+    requestApi(`/cards/multiple?id_cards=${idsToDelete.toString()}`, 'DELETE', [])
       .then((response) => {
         setShowModal(false);
         setRefresh(Date.now());
@@ -149,10 +119,14 @@ const FoodList = () => {
   useEffect(() => {
     dispatch(actions.controlLoading(true));
     let query = `?items_per_page=${itemsPerPage}&page=${currentPage}&search=${searchString}`;
-    requestApi(`/foods${query}`, 'GET', [])
+    requestApi(`/cards${query}`, 'GET', [])
       .then((response) => {
         console.log('response=> ', response);
-        setFoods(response.data.data);
+        // Lọc các thẻ có ngày kết thúc nhỏ hơn ngày hiện tại
+        const filteredCards = response.data.data.filter((card) => {
+          return card.ngay_end && moment(card.ngay_end) < currentDate;
+        });
+        setCards(filteredCards);
         setNumOfPage(response.data.total);
         dispatch(actions.controlLoading(false));
       })
@@ -160,6 +134,7 @@ const FoodList = () => {
         console.log(err);
         dispatch(actions.controlLoading(false));
       });
+    // eslint-disable-next-line
   }, [currentPage, itemsPerPage, searchString, refresh, dispatch]);
 
   return (
@@ -179,7 +154,7 @@ const FoodList = () => {
           </Button>
         )}
         <Search
-          placeholder="Name Food"
+          placeholder="Name"
           allowClear
           enterButton="Search"
           size="middle"
@@ -190,8 +165,8 @@ const FoodList = () => {
 
       <Table
         style={{ marginTop: 20 }}
-        title={() => 'List Food'}
-        dataSource={foods}
+        title={() => 'List Card'}
+        dataSource={cards}
         columns={columns}
         pagination={{
           total: numOfPage,
@@ -200,7 +175,7 @@ const FoodList = () => {
           onChange: setCurrentPage,
           onShowSizeChange: setItemsPerPage,
         }}
-        rowKey="id_food"
+        rowKey="id_card"
         rowSelection={{
           type: 'checkbox',
           onChange: (selectedRowKeys, selectedRows) => {
@@ -227,4 +202,4 @@ const FoodList = () => {
   );
 };
 
-export default FoodList;
+export default CardWarring;

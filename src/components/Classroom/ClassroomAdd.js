@@ -93,13 +93,13 @@ const ClassroomAdd = () => {
 
               <Form.Item name="day_classroom" rules={[{ required: true, message: 'Day is required' }]}>
                 <Select mode="multiple" onChange={(value) => setDefaultStatus(value)}>
-                  <Option value="2">Thứ 2</Option>
-                  <Option value="3">Thứ 3</Option>
-                  <Option value="4">Thứ 4</Option>
-                  <Option value="5">Thứ 5</Option>
-                  <Option value="6">Thứ 6</Option>
-                  <Option value="7">Thứ 7</Option>
-                  <Option value="1">Chủ Nhật</Option>
+                  <Option value="1">Thứ 2</Option>
+                  <Option value="2">Thứ 3</Option>
+                  <Option value="3">Thứ 4</Option>
+                  <Option value="4">Thứ 5</Option>
+                  <Option value="5">Thứ 6</Option>
+                  <Option value="6">Thứ 7</Option>
+                  <Option value="0">Chủ Nhật</Option>
                 </Select>
               </Form.Item>
 
@@ -111,23 +111,11 @@ const ClassroomAdd = () => {
               </Form.Item>
 
               <Form.Item name="ngay_start" rules={[{ required: true, message: 'Date is required' }]}>
-                <DatePicker
-                  style={{ width: '17rem' }}
-                  allowClear={false}
-                  inputReadOnly={false}
-                  placeholder="Select date"
-                  format="YYYY-MM-DD"
-                />
+                <DatePicker style={{ width: '17rem' }} placeholder="Select date" />
               </Form.Item>
 
               <Form.Item name="ngay_end" rules={[{ required: true, message: 'Date is required' }]}>
-                <DatePicker
-                  style={{ width: '17rem' }}
-                  allowClear={false}
-                  inputReadOnly={false}
-                  placeholder="Select date"
-                  format="YYYY-MM-DD"
-                />
+                <DatePicker style={{ width: '17rem' }} placeholder="Select date" />
               </Form.Item>
 
               <Form.Item className="it_end">

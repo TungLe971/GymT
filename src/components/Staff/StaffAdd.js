@@ -56,12 +56,7 @@ const StaffAdd = () => {
               </Form.Item>
 
               <Form.Item name="ngay_sinh_nv" rules={[{ required: true, message: 'Date is required' }]}>
-                <DatePicker
-                  style={{ width: '17rem' }}
-                  allowClear={false}
-                  inputReadOnly={false}
-                  placeholder="Select date"
-                />
+                <DatePicker style={{ width: '17rem' }} placeholder="Select date" />
               </Form.Item>
 
               <Form.Item name="gioi_tinh_nv" rules={[{ required: true, message: 'Gender is required' }]}>

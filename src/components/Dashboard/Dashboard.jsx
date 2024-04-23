@@ -149,7 +149,7 @@ const Dashboard = () => {
                   title="Card Warring"
                   extra={<Badge count={dashboardData.totalWarring} />}
                 >
-                  <Meta style={{ marginTop: '2rem' }} title={<Link to="/user">View Details</Link>} />
+                  <Meta style={{ marginTop: '2rem' }} title={<Link to="/cardwarring">View Details</Link>} />
                 </Card>
               </div>
 

@@ -49,7 +49,10 @@ import Schedule from './components/Classroom/Schedule/Schedule';
 import HealthEdit from './components/Member/Healthy/HealthEdit';
 import HealthList from './components/Member/Healthy/Health';
 import Statisticalfood from './components/Statistical/Statisticalfood';
+import Statisticalmember from './components/Statistical/Statisticalmember';
 import Statistical from './components/Statistical/Statistical';
+import CardWarring from './components/Card/CardWarring';
+import ClassroomDetail from './components/Classroom/ClassroomDetail';
 
 function App() {
   return (
@@ -86,15 +89,18 @@ function App() {
               <Route path="/food/edit/:id_food" element={<FoodEdit />} />
               <Route path="/card" element={<CardList />} />
               <Route path="/card/add" element={<CardAdd />} />
+              <Route path="/cardwarring" element={<CardWarring />} />
               <Route path="/notification" element={<NotificationList />} />
               <Route path="/notification/add" element={<NotificationAdd />} />
               <Route path="/notification/edit/:id_n" element={<NotificationEdit />} />
               <Route path="/classroom" element={<ClassroomList />} />
               <Route path="/classroom/add" element={<ClassroomAdd />} />
               <Route path="/classroom/edit/:id_classroom" element={<ClassroomEdit />} />
+              <Route path="/classroomdetail" element={<ClassroomDetail />} />
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/statistical" element={<Statistical />} />
               <Route path="/statisticalfood" element={<Statisticalfood />} />
+              <Route path="/statisticalmember" element={<Statisticalmember />} />
             </Route>
           </Route>
           <Route element={<PublicRoutes />}>

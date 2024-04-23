@@ -2,9 +2,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 800px;
+  width: 300px;
 }
-:where(.css-dev-only-do-not-override-djtmh8).ant-picker-calendar .ant-picker-panel .ant-picker-body {
+:where(.css-dev-only-do-not-override-usln0u).ant-picker-calendar .ant-picker-panel .ant-picker-body {
   width: 70rem;
   padding: 3rem 2rem 1rem 2rem;
   position: absolute;
@@ -13,7 +13,7 @@
   background-color: rgb(248, 254, 255);
 }
 
-:where(.css-dev-only-do-not-override-djtmh8).ant-picker-calendar .ant-picker-calendar-header {
+:where(.css-dev-only-do-not-override-usln0u).ant-picker-calendar .ant-picker-calendar-header {
   position: absolute;
   right: 7rem;
   z-index: 100;

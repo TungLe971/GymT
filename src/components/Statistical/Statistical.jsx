@@ -1,33 +1,30 @@
 import React from 'react';
 import { Carousel } from 'antd';
-// import requestApi from '../../helpers/api';
 import './Statistical.css';
+import Statisticalcard from './Statisticalcard';
+import Statisticalpackages from './Statisticalpackages';
+import Statisticalclassroom from './Statisticalclassroom';
 
-const contentStyle = {
-  height: '360px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
-};
 const Statistical = () => {
   return (
     <div>
-      <Carousel style={{ marginTop: 50, marginLeft: 50, width: '50rem' }} autoplay>
-        <div>
-          <h3 style={contentStyle}>1</h3>
+      <Carousel style={{ marginTop: 30, marginLeft: 50, width: '70rem' }}>
+        <div className="slide1" key="slide1">
+          <h2 style={{ textAlign: 'center', color: 'white' }}>Biểu đồ thống doanh thu theo gói</h2>
+          <Statisticalcard />
         </div>
-        <div>
-          <h3 style={contentStyle}>2</h3>
+
+        <div className="slide2" key="slide2">
+          <h2 style={{ textAlign: 'center', color: 'white' }}>Biểu đồ số lượng đăng ký gói</h2>
+          <Statisticalpackages />
         </div>
-        <div>
-          <h3 style={contentStyle}>3</h3>
-        </div>
-        <div>
-          <h3 style={contentStyle}>4</h3>
+        <div className="slide3" key="slide3">
+          <h2 style={{ textAlign: 'center', color: 'white' }}>Biểu đồ sĩ số lớp</h2>
+          <Statisticalclassroom />
         </div>
       </Carousel>
     </div>
   );
 };
+
 export default Statistical;

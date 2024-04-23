@@ -16,7 +16,6 @@ const ClassroomEdit = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [staffs, setStaffs] = useState([]);
-  const [classroomData, setClassroomData] = useState(null);
 
   useEffect(() => {
     fetchStaffs();
@@ -40,7 +39,6 @@ const ClassroomEdit = () => {
     try {
       const res = await requestApi(`/classrooms/${id_classroom}`, 'GET');
       if (res.data) {
-        setClassroomData(res.data);
         form.setFieldsValue({
           name_classroom: res.data.name_classroom,
           thoi_luong_classroom: res.data.thoi_luong_classroom.toString(),
@@ -125,13 +123,13 @@ const ClassroomEdit = () => {
 
               <Form.Item name="day_classroom" rules={[{ required: true, message: 'Day is required' }]}>
                 <Select mode="multiple" style={{ width: '17rem' }}>
-                  <Option value="2">Thứ 2</Option>
-                  <Option value="3">Thứ 3</Option>
-                  <Option value="4">Thứ 4</Option>
-                  <Option value="5">Thứ 5</Option>
-                  <Option value="6">Thứ 6</Option>
-                  <Option value="7">Thứ 7</Option>
-                  <Option value="1">Chủ Nhật</Option>
+                  <Option value="1">Thứ 2</Option>
+                  <Option value="2">Thứ 3</Option>
+                  <Option value="3">Thứ 4</Option>
+                  <Option value="4">Thứ 5</Option>
+                  <Option value="5">Thứ 6</Option>
+                  <Option value="6">Thứ 7</Option>
+                  <Option value="0">Chủ Nhật</Option>
                 </Select>
               </Form.Item>
 
@@ -142,22 +140,12 @@ const ClassroomEdit = () => {
                 </Select>
               </Form.Item>
 
-              <Form.Item name="ngay_start" rules={[{ required: true, message: 'Start date is required' }]}>
-                <DatePicker
-                  style={{ width: '17rem' }}
-                  allowClear={false}
-                  inputReadOnly={false}
-                  placeholder="Select start date"
-                />
+              <Form.Item name="ngay_start">
+                <DatePicker style={{ width: '17rem' }} placeholder="Select start date" />
               </Form.Item>
 
-              <Form.Item name="ngay_end" rules={[{ required: true, message: 'End date is required' }]}>
-                <DatePicker
-                  style={{ width: '17rem' }}
-                  allowClear={false}
-                  inputReadOnly={false}
-                  placeholder="Select end date"
-                />
+              <Form.Item name="ngay_end">
+                <DatePicker style={{ width: '17rem' }} placeholder="Select end date" />
               </Form.Item>
 
               <Form.Item>

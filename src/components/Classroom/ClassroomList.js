@@ -73,13 +73,13 @@ const ClassroomList = () => {
       key: 'day_classroom',
       render: (day_classroom) => {
         const renderValue = {
-          2: 'Thứ 2',
-          3: 'Thứ 3',
-          4: 'Thứ 4',
-          5: 'Thứ 5',
-          6: 'Thứ 6',
-          7: 'Thứ 7',
-          1: 'Chủ nhật',
+          1: 'Thứ 2',
+          2: 'Thứ 3',
+          3: 'Thứ 4',
+          4: 'Thứ 5',
+          5: 'Thứ 6',
+          6: 'Thứ 7',
+          0: 'Chủ nhật',
         };
 
         if (Array.isArray(day_classroom)) {

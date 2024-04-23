@@ -47,7 +47,7 @@ const Sidebar = () => {
       icon: <CreditCardFilled />,
       items: [
         { label: 'Card List', key: 'card' },
-        { label: 'Card status', key: 'cardstt' },
+        { label: 'Card Warring', key: 'cardwarring' },
       ],
     },
     {
@@ -66,6 +66,7 @@ const Sidebar = () => {
       items: [
         { label: 'Classroom List', key: 'classroom' },
         { label: 'Schedule', key: 'schedule' },
+        { label: 'Classroom Detail', key: 'classroomdetail' },
       ],
     },
     {
@@ -102,7 +103,6 @@ const Sidebar = () => {
       items: [
         { label: 'Revenue', key: 'statistical' },
         { label: 'Member', key: 'statisticalmember' },
-        { label: 'Staff', key: 'statisticalstaff' },
         { label: 'Food', key: 'statisticalfood' },
       ],
     },
