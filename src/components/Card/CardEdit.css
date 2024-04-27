@@ -1,0 +1,76 @@
+.bg-primary-card-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: -1.5rem;
+}
+
+.card-body-card-edit {
+  display: flex;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: white;
+  width: 33rem;
+}
+
+.label-edit-card-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-right: 20px;
+  margin-top: 6px;
+}
+
+.input-edit-card-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 34rem;
+}
+
+.label-edit-card-edit label {
+  color: rgb(231, 182, 133);
+  font-size: 1.37rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  pointer-events: none;
+  width: 12rem;
+}
+
+.input-edit-card-edit input {
+  width: 17rem;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.input-edit-card-edit select {
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.input-edit-card-edit p {
+  width: 300px;
+  margin-top: -1.3rem;
+  margin-bottom: -1.1rem;
+  color: red;
+}
+
+.btn-primary-card-edit {
+  position: relative;
+  width: 200px;
+  padding: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: -50px;
+}
+
+.btn-primary-card-edit:hover {
+  background-color: #0056b3;
+}

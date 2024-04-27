@@ -4,8 +4,7 @@ import requestApi from '../../helpers/api';
 import { useDispatch } from 'react-redux';
 import * as actions from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-import './CardList.css';
-import { DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { DeleteOutlined, PlusOutlined, CheckOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons';
 
 const { Text } = Typography;
 const { Search } = Input;
@@ -99,6 +98,9 @@ const CardList = () => {
       align: 'center',
       render: (_, row) => (
         <>
+          <Button type="primary" icon={<EditOutlined />} className="me-1" onClick={() => handleEdit(row.id_card)}>
+            Sửa
+          </Button>
           <Button
             style={{ color: 'red' }}
             type="danger"
@@ -114,6 +116,11 @@ const CardList = () => {
 
   const onHandleAdd = () => {
     navigate('/card/add');
+  };
+
+  const handleEdit = (id_card) => {
+    navigate('/card/edit/' + id_card);
+    console.log('Edit card with id_card => ', id_card);
   };
 
   const handleDelete = (id_card) => {
@@ -179,7 +186,7 @@ const CardList = () => {
           </Button>
         )}
         <Search
-          placeholder="Name"
+          placeholder="ID or Name"
           allowClear
           enterButton="Search"
           size="middle"

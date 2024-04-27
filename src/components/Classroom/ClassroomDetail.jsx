@@ -9,41 +9,39 @@ const { Option } = Select;
 
 const ClassroomDetail = () => {
   const dispatch = useDispatch();
-  const [cards, setCards] = useState([]);
+  const [classrooms, setClassrooms] = useState([]);
+  const [allCards, setAllCards] = useState([]);
   const [selectedClassroom, setSelectedClassroom] = useState(null);
   const [selectedClassroomMembers, setSelectedClassroomMembers] = useState([]);
 
   const columns = [
     {
       title: 'ID hội viên',
-      dataIndex: 'member',
+      dataIndex: 'id_hv',
       key: 'member_id',
       align: 'center',
-      render: (member) => <span>{member ? member.id_hv : ''}</span>,
     },
     {
       title: 'Tên hội viên',
-      dataIndex: 'member',
+      dataIndex: 'name_hv',
       key: 'member_name',
       align: 'center',
-      render: (member) => <span>{member ? member.name_hv : ''}</span>,
     },
     {
       title: 'SĐT',
-      dataIndex: 'member',
+      dataIndex: 'sdt_hv',
       key: 'member_phone',
       align: 'center',
-      render: (member) => <span>{member ? member.sdt_hv : ''}</span>,
     },
   ];
 
   useEffect(() => {
     dispatch(actions.controlLoading(true));
-    requestApi(`/cards`, 'GET', [])
+    requestApi(`/classrooms`, 'GET', [])
       .then((response) => {
-        console.log('response=> ', response);
-        if (response.data && response.data.data) {
-          setCards(response.data.data);
+        console.log('classrooms response=> ', response);
+        if (response && response.data.data && Array.isArray(response.data.data)) {
+          setClassrooms(response.data.data);
         }
         dispatch(actions.controlLoading(false));
       })
@@ -51,21 +49,49 @@ const ClassroomDetail = () => {
         console.log(err);
         dispatch(actions.controlLoading(false));
       });
+
+    requestApi(`/cards`, 'GET', [])
+      .then((response) => {
+        console.log('cards response=> ', response);
+        if (response && response.data.data && Array.isArray(response.data.data)) {
+          setAllCards(response.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [dispatch]);
 
   const handleSelectChange = (value) => {
     setSelectedClassroom(value);
-    const filteredMembers = cards
-      .filter((card) => card.classroom.id_classroom.toString() === value)
-      .map((card) => card.member);
-    setSelectedClassroomMembers(filteredMembers);
+    if (value) {
+      dispatch(actions.controlLoading(true));
+      requestApi(`/cards?id_classroom=${value}`, 'GET', [])
+        .then((response) => {
+          console.log('cards response=> ', response);
+          if (response && response.data.data && Array.isArray(response.data.data)) {
+            const classroomCards = allCards.filter((card) => card.classroom.id_classroom === value);
+            const members = classroomCards.map((card) => card.member);
+            setSelectedClassroomMembers(members);
+          }
+          dispatch(actions.controlLoading(false));
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch(actions.controlLoading(false));
+        });
+    } else {
+      setSelectedClassroomMembers([]);
+    }
   };
 
   const handleExportExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(selectedClassroomMembers);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Classroom Members');
-    XLSX.writeFile(workbook, 'classroom_members.xlsx');
+    if (selectedClassroomMembers.length > 0) {
+      const worksheet = XLSX.utils.json_to_sheet(selectedClassroomMembers);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Classroom Members');
+      XLSX.writeFile(workbook, 'classroom_members.xlsx');
+    }
   };
 
   return (
@@ -78,9 +104,9 @@ const ClassroomDetail = () => {
           onChange={handleSelectChange}
           value={selectedClassroom}
         >
-          {cards.map((card) => (
-            <Option key={card.classroom.id_classroom} value={card.classroom.id_classroom}>
-              {`${card.classroom.name_classroom}`}
+          {classrooms.map((classroom) => (
+            <Option key={classroom.id_classroom} value={classroom.id_classroom}>
+              {`${classroom.name_classroom}`}
             </Option>
           ))}
         </Select>

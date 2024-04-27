@@ -8,16 +8,16 @@ import Register from './components/user/Register';
 import PrivateRoutes from './layouts/PrivateRoutes';
 import PublicRoutes from './layouts/PublicRoutes';
 import Layout from './layouts/Layout';
-// import PostList from './components/user/Post/PostList';
-// import PostEdit from './components/user/Post/PostEdit';
-// import PostAdd from './components/user/Post/PostAdd';
-// import Home from './components/Outside/Home/Home';
-// import Programs from './components/Outside/Programs/Programs';
-// import Reasons from './components/Outside/Reasons/Reasons';
-// import Plans from './components/Outside/Plans/Plan';
-// import Testimonials from './components/Outside/Testimonials/Testimonials';
-// import Join from './components/Outside/Join/Join';
-// import Footer from './components/Outside/Footer/Footer';
+import PostList from './components/user/Post/PostList';
+import PostEdit from './components/user/Post/PostEdit';
+import PostAdd from './components/user/Post/PostAdd';
+import Home from './components/Outside/Home/Home';
+import Programs from './components/Outside/Programs/Programs';
+import Reasons from './components/Outside/Reasons/Reasons';
+import Plans from './components/Outside/Plans/Plan';
+import Testimonials from './components/Outside/Testimonials/Testimonials';
+import Join from './components/Outside/Join/Join';
+import Footer from './components/Outside/Footer/Footer';
 import UserList from './components/user/UserList';
 import UserEdit from './components/user/UserEdit';
 import MemberList from './components/Member/MemberList';
@@ -29,9 +29,9 @@ import PackagesEdit from './components/Packages/PackagesEdit';
 import StaffList from './components/Staff/StaffList';
 import StaffAdd from './components/Staff/StaffAdd';
 import StaffEdit from './components/Staff/StaffEdit';
-// import EquipmentList from './components/Equipment/EquipmentList';
-// import EquipmentAdd from './components/Equipment/EquipmentAdd';
-// import EquipmentEdit from './components/Equipment/EquipmentEdit';
+import EquipmentList from './components/Equipment/EquipmentList';
+import EquipmentAdd from './components/Equipment/EquipmentAdd';
+import EquipmentEdit from './components/Equipment/EquipmentEdit';
 import FoodList from './components/Food/FoodList';
 import FoodAdd from './components/Food/FoodAdd';
 import FoodEdit from './components/Food/FoodEdit';
@@ -53,6 +53,7 @@ import Statisticalmember from './components/Statistical/Statisticalmember';
 import Statistical from './components/Statistical/Statistical';
 import CardWarring from './components/Card/CardWarring';
 import ClassroomDetail from './components/Classroom/ClassroomDetail';
+import CardEdit from './components/Card/CardEdit';
 
 function App() {
   return (
@@ -63,9 +64,9 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
-              {/* <Route path="/post" element={<PostList />} />
+              <Route path="/post" element={<PostList />} />
               <Route path="/post/add" element={<PostAdd />} />
-              <Route path="/post/edit/:id" element={<PostEdit />} /> */}
+              <Route path="/post/edit/:id" element={<PostEdit />} />
 
               <Route path="/user" element={<UserList />} />
               <Route path="/user/edit/:id" element={<UserEdit />} />
@@ -81,14 +82,15 @@ function App() {
               <Route path="/packages" element={<PackagesList />} />
               <Route path="/packages/add" element={<PackagesAdd />} />
               <Route path="/packages/edit/:id_packages" element={<PackagesEdit />} />
-              {/* <Route path="/equipment" element={<EquipmentList />} />
+              <Route path="/equipment" element={<EquipmentList />} />
               <Route path="/equipment/add" element={<EquipmentAdd />} />
-              <Route path="/equipment/edit/:id_equipment" element={<EquipmentEdit />} /> */}
+              <Route path="/equipment/edit/:id_equipment" element={<EquipmentEdit />} />
               <Route path="/food" element={<FoodList />} />
               <Route path="/food/add" element={<FoodAdd />} />
               <Route path="/food/edit/:id_food" element={<FoodEdit />} />
               <Route path="/card" element={<CardList />} />
               <Route path="/card/add" element={<CardAdd />} />
+              <Route path="/card/edit/:id_card" element={<CardEdit />} />
               <Route path="/cardwarring" element={<CardWarring />} />
               <Route path="/notification" element={<NotificationList />} />
               <Route path="/notification/add" element={<NotificationAdd />} />
@@ -106,7 +108,7 @@ function App() {
           <Route element={<PublicRoutes />}>
             <Route path="/login" element={<Login />} />
           </Route>
-          {/* <Route
+          <Route
             path="/home"
             element={
               <div className="App">
@@ -119,7 +121,7 @@ function App() {
                 <Footer />
               </div>
             }
-          /> */}
+          />
           <Route path="*" element={<PageNotFound />}></Route>
         </Route>
       </Routes>
