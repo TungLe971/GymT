@@ -18,7 +18,7 @@ const Join = () => {
     }
 
     emailjs
-      .sendForm('service_tlbxnjk', 'template_gl4lh3z', form.current, {
+      .sendForm('service_tlbxnjk', 'gymt_123', form.current, {
         publicKey: 'xiAQ8wWWiXASbSZtv',
       })
       .then(() => {
