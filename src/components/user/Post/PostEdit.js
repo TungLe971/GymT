@@ -157,7 +157,7 @@ const PostEdit = () => {
               {errors.thumbnail && <p>{errors.thumbnail.message}</p>}
             </div>
 
-            <div style={{ width: '30rem' }}>
+            <div style={{ width: '25rem' }}>
               <CKEditor
                 editor={ClassicEditor}
                 data={postData.description}

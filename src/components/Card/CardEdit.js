@@ -75,7 +75,7 @@ const CardEdit = () => {
     try {
       const res = await requestApi(`/cards/${id_card}`, 'PUT', data);
       console.log('card update => ', res);
-      message.success('Cập nhật lớp học thành công!', 2);
+      message.success('Cập nhật thẻ thành công!', 2);
       setTimeout(() => navigate('/card'), 1000);
     } catch (error) {
       console.error('Failed to update card:', error);
